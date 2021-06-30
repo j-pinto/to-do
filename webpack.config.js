@@ -6,6 +6,8 @@ module.exports = {
 
   entry: {
       index: './src/index.js',
+      task: './src/task.js',
+      project: './src/project.js',
   },
   
   devServer: {
