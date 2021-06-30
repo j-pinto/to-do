@@ -2,6 +2,14 @@ function Project(name) {
   this.title = name
   this.tasks = []
 
+  this.getTasks = function(array) {
+    array.forEach(element => {
+      if (element.project == this.title) {
+        this.addTask(element)
+      }  
+    });
+  }
+
   this.addTask = function(taskObj) {
     this.tasks.push(taskObj)
   }
