@@ -1,4 +1,4 @@
-function Task(name, desc, due, pri, proj) {
+function Task(name, proj, desc='', due='', pri='') {
   this.title = name
   this.description = desc
   this.dueDate = due
