@@ -3,6 +3,7 @@ function Project(name) {
   this.tasks = []
 
   this.getTasks = function(array) {
+    this.tasks = []
     array.forEach(element => {
       if (element.project == this.title) {
         this.addTask(element)
