@@ -5,10 +5,7 @@ module.exports = {
   mode: 'development',
 
   entry: {
-      index: './src/index.js',
-      user: './src/user.js',
-      task: './src/task.js',
-      project: './src/project.js',
+    index: './src/index.js',
   },
   
   devServer: {
