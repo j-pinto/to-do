@@ -1,4 +1,3 @@
-import { Task } from "./task.js";
-import { Project } from "./project.js";
+import { User } from "./user.js"
 
-console.log('index loaded');
+console.log('loaded')
