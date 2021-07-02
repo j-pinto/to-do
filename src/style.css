@@ -1,0 +1,32 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+
+  font-family: monospace;
+}
+
+body {
+  display: grid;
+  grid-template-rows: 1fr 10fr;
+  grid-template-columns: 1fr 7fr;
+
+  grid-template-areas: 
+    "topbar topbar"
+    "sidebar main";
+}
+
+#topbar {
+  grid-area: topbar; 
+  background-color: lightslategray;
+}
+
+#sidebar {
+  grid-area: sidebar;
+  background-color: grey;
+}
+
+#main {
+  grid-area: main;
+  background-color: lightgray
+}
