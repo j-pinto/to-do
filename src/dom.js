@@ -19,10 +19,21 @@ function createTopbar() {
   topbar.innerHTML = "ToDo";
 }
 
+function printProjects(projectArray) {
+  let sidebar = document.getElementById("sidebar")
+  projectArray.forEach(project => {
+    let projDiv = document.createElement("div")
+    projDiv.className = "projectDiv"
+    projDiv.innerHTML = `${project.title}`
+
+    sidebar.appendChild(projDiv)
+  });
+}
+
 function pageInit() {
   createTopbar();
   createSidebar();
   createMainDiv();
 }
 
-export { pageInit }
+export { pageInit, printProjects }
