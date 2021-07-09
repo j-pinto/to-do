@@ -1,10 +1,22 @@
 import { Task } from "./task.js";
 import { Project } from "./project.js";
+import { storage } from "./storage.js";
 
-function User(username) {
-  this.name = username 
+function User() {
+  this.name = 'user' 
   this.taskArray = []
   this.projArray = []
+
+  this.attemptLoad = function() {
+    let parsedUser = storage.load()
+    if (parsedUser == null) {
+      return
+    } else {
+      this.name = parsedUser.name
+      this.taskArray = parsedUser.tasks
+      this.projArray = parsedUser.projects
+    }
+  }
 
   this.createProject = function(name) {
     const project = new Project(name);
