@@ -5,6 +5,24 @@ const dom = (() => {
     main.id = "main";
     main.innerHTML = "Main Content";
   }
+
+  const newTaskButton = () => {
+    let taskButton = document.createElement("button")
+    taskButton.id = "newtask"
+    taskButton.innerHTML = "New Task"
+
+    let main = document.getElementById("main")
+    main.appendChild(taskButton)
+  }
+
+  const newProjectButton = () => {
+    let projButton = document.createElement("button")
+    projButton.id = "newproject"
+    projButton.innerHTML = "New Project"
+
+    let main = document.getElementById("main")
+    main.appendChild(projButton)
+  }
   
   const createSidebar = () => {
     let sidebar = document.createElement("div");
@@ -35,6 +53,8 @@ const dom = (() => {
     createTopbar();
     createSidebar();
     createMainDiv();
+    newTaskButton();
+    newProjectButton();
   }
   
   return { pageInit, printProjects }
