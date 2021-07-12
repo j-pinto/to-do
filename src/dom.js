@@ -28,7 +28,6 @@ const dom = (() => {
     let sidebar = document.createElement("div");
     document.body.appendChild(sidebar);
     sidebar.id = "sidebar";
-    sidebar.innerHTML = "Sidebar";
   }
   
   const createTopbar = () => {
@@ -46,6 +45,7 @@ const dom = (() => {
     }
 
     //re-print
+    sidebar.innerHTML = 'Projects:'
     projectArray.forEach(project => {
       let projDiv = document.createElement("div")
       projDiv.className = "projectDiv"
