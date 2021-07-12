@@ -39,7 +39,13 @@ const dom = (() => {
   }
   
   const printProjects = (projectArray) => {
+    //remove all printed projects
     let sidebar = document.getElementById("sidebar")
+    while (sidebar.firstChild) {
+      sidebar.removeChild(sidebar.firstChild)
+    }
+
+    //re-print
     projectArray.forEach(project => {
       let projDiv = document.createElement("div")
       projDiv.className = "projectDiv"
