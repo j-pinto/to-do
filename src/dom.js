@@ -20,8 +20,8 @@ const dom = (() => {
     projButton.id = "newproject"
     projButton.innerHTML = "New Project"
 
-    let main = document.getElementById("main")
-    main.appendChild(projButton)
+    let sidebar = document.getElementById("sidebar")
+    sidebar.appendChild(projButton)
   }
   
   const createSidebar = () => {
@@ -46,6 +46,8 @@ const dom = (() => {
 
     //re-print
     sidebar.innerHTML = 'Projects:'
+    newProjectButton()
+
     projectArray.forEach(project => {
       let projDiv = document.createElement("div")
       projDiv.className = "projectDiv"
@@ -60,7 +62,6 @@ const dom = (() => {
     createSidebar();
     createMainDiv();
     newTaskButton();
-    newProjectButton();
   }
   
   return { pageInit, printProjects }
