@@ -26,6 +26,24 @@ function User() {
     storage.save(this)
   }
 
+  this.deleteProject = function(name) {
+    let project = this.projArray.find(item => item.title == name)
+  
+    //erase tasks associated with project
+    this.taskArray.forEach((task) => {
+      if (task.project == project.title) {
+        let index = this.taskArray.indexOf(task)
+        this.taskArray.splice(index, 1)
+      }
+    })
+  
+    //remove project from project array
+    let index = this.projArray.indexOf(project)
+    this.projArray.splice(index, 1)
+  
+    storage.save(this)
+  }
+
   this.sortProjectsByName = function() {
     this.projArray.sort((a, b) => 
       a.title.localeCompare(b.title, 'en', 
