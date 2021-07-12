@@ -3,16 +3,13 @@ const dom = (() => {
     let main = document.createElement("div");
     document.body.appendChild(main);
     main.id = "main";
-    main.innerHTML = "Main Content";
   }
 
-  const newTaskButton = () => {
+  const createTaskButton = () => {
     let taskButton = document.createElement("button")
     taskButton.id = "newtask"
     taskButton.innerHTML = "New Task"
-
-    let main = document.getElementById("main")
-    main.appendChild(taskButton)
+    return taskButton
   }
 
   const newProjectButton = () => {
@@ -66,15 +63,32 @@ const dom = (() => {
       projects.appendChild(projDiv)
     });
   }
+
+  const upcomingPage = (taskArray) => {
+    let main = document.getElementById("main")
+    let upcomingTasksDiv = document.createElement("div")
+    upcomingTasksDiv.id = "upcomingTasks"
+    upcomingTasksDiv.innerHTML = "Upcoming Tasks:"
+    main.appendChild(upcomingTasksDiv)
+
+    let newTaskButton = createTaskButton()
+    upcomingTasksDiv.appendChild(newTaskButton)
+
+    taskArray.forEach(task => {
+      let taskDiv = document.createElement("div")
+      taskDiv.className = "taskDiv"
+      taskDiv.innerHTML = task.title
+      upcomingTasksDiv.appendChild(taskDiv)
+    })
+  }
   
   const pageInit = () => {
     createTopbar();
     createSidebar();
     createMainDiv();
-    newTaskButton();
   }
   
-  return { pageInit, printProjects }
+  return { pageInit, printProjects, upcomingPage }
 })()
 
 export { dom }
