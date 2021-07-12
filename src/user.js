@@ -21,8 +21,20 @@ function User() {
   this.createProject = function(name) {
     const project = new Project(name);
     this.projArray.push(project)
-
+    this.sortProjectsByName()
+    
     storage.save(this)
+  }
+
+  this.sortProjectsByName = function() {
+    this.projArray.sort((a,b) => {
+      if (a.title < b.title) {
+        return -1
+      }
+      else {
+        return 1
+      }
+    })
   }
 
   this.createTask = function(name, proj, due='', pri='', desc='') {
