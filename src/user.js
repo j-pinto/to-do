@@ -3,13 +3,15 @@ import { Project } from "./project.js";
 import { storage } from "./storage.js";
 
 function User() {
-  this.name = 'user' 
+  this.name = ''
   this.taskArray = []
   this.projArray = []
 
   this.attemptLoad = function() {
     let parsedUser = storage.load()
     if (parsedUser == null) {
+      this.name = 'user'
+      this.createProject('General')
       return
     } else {
       this.name = parsedUser.name
