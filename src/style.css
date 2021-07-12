@@ -33,3 +33,7 @@ body {
   grid-area: main;
   background-color: lightgray
 }
+
+#upcoming:hover, .projectDiv:hover {
+  background-color: lightgray;
+}
