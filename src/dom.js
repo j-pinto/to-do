@@ -71,6 +71,7 @@ const dom = (() => {
     upcomingTasksDiv.innerHTML = "Upcoming Tasks:"
     main.appendChild(upcomingTasksDiv)
 
+    upcomingTasksDiv.appendChild(document.createElement("br"))
     let newTaskButton = createTaskButton()
     upcomingTasksDiv.appendChild(newTaskButton)
 
