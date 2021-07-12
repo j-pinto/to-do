@@ -20,14 +20,24 @@ const dom = (() => {
     projButton.id = "newproject"
     projButton.innerHTML = "New Project"
 
-    let sidebar = document.getElementById("sidebar")
-    sidebar.appendChild(projButton)
+    let projects = document.getElementById("projects")
+    projects.appendChild(projButton)
   }
   
   const createSidebar = () => {
     let sidebar = document.createElement("div");
-    document.body.appendChild(sidebar);
     sidebar.id = "sidebar";
+    document.body.appendChild(sidebar);
+
+    let upcoming = document.createElement("div")
+    upcoming.id = "upcoming"
+    upcoming.innerHTML = "Upcoming Tasks"
+    sidebar.appendChild(upcoming)
+
+    let projects = document.createElement("div")
+    projects.id = "projects"
+    projects.innerHTML = "Projects: "
+    sidebar.appendChild(projects)
   }
   
   const createTopbar = () => {
@@ -39,13 +49,13 @@ const dom = (() => {
   
   const printProjects = (projectArray) => {
     //remove all printed projects
-    let sidebar = document.getElementById("sidebar")
-    while (sidebar.firstChild) {
-      sidebar.removeChild(sidebar.firstChild)
+    let projects = document.getElementById("projects")
+    while (projects.firstChild) {
+      projects.removeChild(projects.firstChild)
     }
 
     //re-print
-    sidebar.innerHTML = 'Projects:'
+    projects.innerHTML = "Projects:"
     newProjectButton()
 
     projectArray.forEach(project => {
@@ -53,7 +63,7 @@ const dom = (() => {
       projDiv.className = "projectDiv"
       projDiv.innerHTML = `${project.title}`
   
-      sidebar.appendChild(projDiv)
+      projects.appendChild(projDiv)
     });
   }
   
