@@ -22,19 +22,18 @@ function User() {
     const project = new Project(name);
     this.projArray.push(project)
     this.sortProjectsByName()
-    
+
     storage.save(this)
   }
 
   this.sortProjectsByName = function() {
-    this.projArray.sort((a,b) => {
-      if (a.title < b.title) {
-        return -1
-      }
-      else {
-        return 1
-      }
-    })
+    this.projArray.sort((a, b) => 
+      a.title.localeCompare(b.title, 'en', 
+      { sensitivity: 'base', numeric: true, ignorePunctuation: true }
+      )
+    )
+
+    storage.save(this)
   }
 
   this.createTask = function(name, proj, due='', pri='', desc='') {
