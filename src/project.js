@@ -2,7 +2,7 @@ function Project(name) {
   this.title = name
   this.tasks = []
 
-  this.getTasks = function(array) {
+  this.linkTasks = function(array) {
     this.tasks = []
     array.forEach(element => {
       if (element.project == this.title) {
@@ -11,7 +11,7 @@ function Project(name) {
     });
   }
 
-  this.deleteTask = function(taskObj) {
+  this.delinkTask = function(taskObj) {
     let index = this.tasks.indexOf(taskObj)
     if (index != -1) {
       this.tasks.splice(index, 1)

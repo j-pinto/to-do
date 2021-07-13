@@ -61,10 +61,19 @@ function User() {
     this.taskArray.push(task)
 
     let project = this.projArray.find(item => item.title == proj)
-    project.getTasks(this.taskArray)
+    project.linkTasks(this.taskArray)
     project.sortTasksByDate()
 
     storage.save(this)
+  }
+
+  this.deleteTask = function(name) {
+    let task = this.taskArray.find(item => item.title == name)
+    let project = this.projArray.find(item => item.title == task.project)
+    project.delinkTask(task)
+
+    let index = this.taskArray.indexOf(task)
+    this.taskArray.splice(index, 1)
   }
 }
 
