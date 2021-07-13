@@ -6,13 +6,9 @@ function Project(name) {
     this.tasks = []
     array.forEach(element => {
       if (element.project == this.title) {
-        this.addTask(element)
+        this.tasks.push(element)
       }  
     });
-  }
-
-  this.addTask = function(taskObj) {
-    this.tasks.push(taskObj)
   }
 
   this.deleteTask = function(taskObj) {
