@@ -28,8 +28,8 @@ function User() {
     storage.save(this)
   }
 
-  this.deleteProject = function(name) {
-    let project = this.projArray.find(item => item.title == name)
+  this.deleteProject = function(projectObj) {
+    let project = projectObj
   
     //erase tasks associated with project
     this.taskArray.forEach((task) => {
@@ -67,8 +67,8 @@ function User() {
     storage.save(this)
   }
 
-  this.deleteTask = function(name) {
-    let task = this.taskArray.find(item => item.title == name)
+  this.deleteTask = function(taskObj) {
+    let task = taskObj
     let project = this.projArray.find(item => item.title == task.project)
     project.delinkTask(task)
 
