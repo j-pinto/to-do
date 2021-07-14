@@ -10,12 +10,6 @@ const dom = (() => {
     taskButton.id = "newTaskButton"
     taskButton.innerHTML = "New Task"
   }
-
-  const createProjectButton = () => {
-    let projButton = document.createElement("button")
-    projButton.id = "newProjectButton"
-    projButton.innerHTML = "New Project"
-  }
   
   const createSidebar = () => {
     let sidebar = document.createElement("div");
@@ -27,10 +21,15 @@ const dom = (() => {
     upcoming.innerHTML = "Upcoming Tasks"
     sidebar.appendChild(upcoming)
 
-    let projects = document.createElement("div")
-    projects.id = "projectsList"
-    projects.innerHTML = "Projects: "
-    sidebar.appendChild(projects)
+    let projList = document.createElement("div")
+    projList.id = "projectsList"
+    projList.innerHTML = "Projects: "
+    sidebar.appendChild(projList)
+
+    let projButton = document.createElement("button")
+    projButton.id = "newProjectButton"
+    projButton.innerHTML = "New Project"
+    sidebar.appendChild(projButton)
   }
   
   const createTopbar = () => {
