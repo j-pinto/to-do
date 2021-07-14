@@ -26,7 +26,7 @@ const dom = (() => {
     projButton.innerHTML = "New Project"
     sidebar.appendChild(projButton)
   }
-  
+
   const createMainDiv = () => {
     let main = document.createElement("div")
     document.body.appendChild(main)
@@ -47,23 +47,18 @@ const dom = (() => {
     main.appendChild(taskList)
   }
   
-  const printProjects = (projectArray) => {
+  const printProjectList = (projectArray) => {
     //remove all printed projects
-    let projects = document.getElementById("projectsList")
-    while (projects.firstChild) {
-      projects.removeChild(projects.firstChild)
+    let projectList = document.getElementById("projectsList")
+    while (projectList.firstChild) {
+      projectList.removeChild(projectList.firstChild)
     }
 
-    //re-print
-    projects.innerHTML = "Projects:"
-    newProjectButton()
-
     projectArray.forEach(project => {
-      let projDiv = document.createElement("div")
-      projDiv.className = "projectListItem"
-      projDiv.innerHTML = `${project.title}`
-  
-      projects.appendChild(projDiv)
+      let projectListItem = document.createElement("div")
+      projectListItem.className = "projectListItem"
+      projectListItem.innerHTML = `${project.title}`
+      projectList.appendChild(projectListItem)
     });
   }
   
@@ -73,7 +68,7 @@ const dom = (() => {
     createMainDiv();
   }
   
-  return { pageInit, printProjects }
+  return { pageInit, printProjectList }
 })()
 
 export { dom }

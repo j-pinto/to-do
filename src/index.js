@@ -6,5 +6,4 @@ const user = new User();
 user.attemptLoad();
 
 dom.pageInit();
-dom.printProjects(user.projArray)
-dom.upcomingPage(user.taskArray)
+dom.printProjectList(user.projArray)
