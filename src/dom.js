@@ -16,15 +16,15 @@ const dom = (() => {
     upcoming.innerHTML = "Upcoming Tasks"
     sidebar.appendChild(upcoming)
 
-    let projList = document.createElement("div")
-    projList.id = "projectsList"
-    projList.innerHTML = "Projects: "
-    sidebar.appendChild(projList)
-
     let projButton = document.createElement("button")
     projButton.id = "newProjectButton"
     projButton.innerHTML = "New Project"
     sidebar.appendChild(projButton)
+
+    let projList = document.createElement("div")
+    projList.id = "projectsList"
+    projList.innerHTML = "Projects: "
+    sidebar.appendChild(projList)
   }
 
   const createMainDiv = () => {
