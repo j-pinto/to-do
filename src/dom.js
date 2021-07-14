@@ -9,16 +9,12 @@ const dom = (() => {
     let taskButton = document.createElement("button")
     taskButton.id = "newTaskButton"
     taskButton.innerHTML = "New Task"
-    return taskButton
   }
 
-  const newProjectButton = () => {
+  const createProjectButton = () => {
     let projButton = document.createElement("button")
     projButton.id = "newProjectButton"
     projButton.innerHTML = "New Project"
-
-    let projects = document.getElementById("projectsList")
-    projects.appendChild(projButton)
   }
   
   const createSidebar = () => {
