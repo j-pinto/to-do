@@ -1,14 +1,18 @@
 const dom = (() => {
   const createMainDiv = () => {
-    let main = document.createElement("div");
-    document.body.appendChild(main);
-    main.id = "main";
-  }
+    let main = document.createElement("div")
+    document.body.appendChild(main)
+    main.id = "main"
 
-  const createTaskButton = () => {
+    let mainHeading = document.createElement("div")
+    mainHeading.id = "mainHeading"
+    main.appendChild(mainHeading)
+    mainHeading.appendChild(document.createElement("br"))
+
     let taskButton = document.createElement("button")
     taskButton.id = "newTaskButton"
     taskButton.innerHTML = "New Task"
+    mainHeading.appendChild(taskButton)
   }
   
   const createSidebar = () => {
@@ -58,25 +62,6 @@ const dom = (() => {
       projects.appendChild(projDiv)
     });
   }
-
-  const upcomingPage = (taskArray) => {
-    let main = document.getElementById("main")
-    let mainHeading = document.createElement("div")
-    mainHeading.id = "mainHeading"
-    mainHeading.innerHTML = "Upcoming Tasks:"
-    main.appendChild(mainHeading)
-
-    mainHeading.appendChild(document.createElement("br"))
-    let newTaskButton = createTaskButton()
-    mainHeading.appendChild(newTaskButton)
-
-    taskArray.forEach(task => {
-      let taskDiv = document.createElement("div")
-      taskDiv.className = "taskDiv"
-      taskDiv.innerHTML = task.title
-      mainHeading.appendChild(taskDiv)
-    })
-  }
   
   const pageInit = () => {
     createTopbar();
@@ -84,7 +69,7 @@ const dom = (() => {
     createMainDiv();
   }
   
-  return { pageInit, printProjects, upcomingPage }
+  return { pageInit, printProjects }
 })()
 
 export { dom }
