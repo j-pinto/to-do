@@ -48,17 +48,34 @@ const dom = (() => {
   }
   
   const printProjectList = (projectArray) => {
-    //remove all printed projects
+    // remove all currently printed projects
     let projectList = document.getElementById("projectsList")
     while (projectList.firstChild) {
       projectList.removeChild(projectList.firstChild)
     }
 
+    // re-print
     projectArray.forEach(project => {
       let projectListItem = document.createElement("div")
       projectListItem.className = "projectListItem"
       projectListItem.innerHTML = `${project.title}`
       projectList.appendChild(projectListItem)
+    });
+  }
+
+  const printTaskList = (taskArray) => {
+    // remove all currently printed tasks
+    let taskList = document.getElementById("taskList")
+    while (taskList.firstChild) {
+      taskList.removeChild(taskList.firstChild)
+    }
+
+    // re-print
+    taskArray.forEach(task => {
+      let taskListItem = document.createElement("div")
+      taskListItem.className = "taskListItem"
+      taskListItem.innerHTML = `${task.title}`
+      taskList.appendChild(taskListItem)
     });
   }
   
@@ -68,7 +85,7 @@ const dom = (() => {
     createMainDiv();
   }
   
-  return { pageInit, printProjectList }
+  return { pageInit, printProjectList, printTaskList }
 })()
 
 export { dom }
