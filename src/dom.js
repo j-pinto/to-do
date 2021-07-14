@@ -14,10 +14,10 @@ const dom = (() => {
 
   const newProjectButton = () => {
     let projButton = document.createElement("button")
-    projButton.id = "newProject"
+    projButton.id = "newProjectButton"
     projButton.innerHTML = "New Project"
 
-    let projects = document.getElementById("projectsNavDiv")
+    let projects = document.getElementById("projectsList")
     projects.appendChild(projButton)
   }
   
@@ -27,12 +27,12 @@ const dom = (() => {
     document.body.appendChild(sidebar);
 
     let upcoming = document.createElement("div")
-    upcoming.id = "upcomingNav"
+    upcoming.id = "upcoming"
     upcoming.innerHTML = "Upcoming Tasks"
     sidebar.appendChild(upcoming)
 
     let projects = document.createElement("div")
-    projects.id = "projectsNavDiv"
+    projects.id = "projectsList"
     projects.innerHTML = "Projects: "
     sidebar.appendChild(projects)
   }
@@ -46,7 +46,7 @@ const dom = (() => {
   
   const printProjects = (projectArray) => {
     //remove all printed projects
-    let projects = document.getElementById("projectsNavDiv")
+    let projects = document.getElementById("projectsList")
     while (projects.firstChild) {
       projects.removeChild(projects.firstChild)
     }
@@ -57,7 +57,7 @@ const dom = (() => {
 
     projectArray.forEach(project => {
       let projDiv = document.createElement("div")
-      projDiv.className = "projectNav"
+      projDiv.className = "projectListItem"
       projDiv.innerHTML = `${project.title}`
   
       projects.appendChild(projDiv)
