@@ -13,6 +13,10 @@ const dom = (() => {
     taskButton.id = "newTaskButton"
     taskButton.innerHTML = "New Task"
     mainHeading.appendChild(taskButton)
+
+    let taskList = document.createElement("div")
+    taskList.id = "taskList"
+    main.appendChild(taskList)
   }
   
   const createSidebar = () => {
