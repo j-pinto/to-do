@@ -7,17 +7,17 @@ const dom = (() => {
 
   const createTaskButton = () => {
     let taskButton = document.createElement("button")
-    taskButton.id = "newtask"
+    taskButton.id = "newTaskButton"
     taskButton.innerHTML = "New Task"
     return taskButton
   }
 
   const newProjectButton = () => {
     let projButton = document.createElement("button")
-    projButton.id = "newproject"
+    projButton.id = "newProject"
     projButton.innerHTML = "New Project"
 
-    let projects = document.getElementById("projects")
+    let projects = document.getElementById("projectsNavDiv")
     projects.appendChild(projButton)
   }
   
@@ -27,12 +27,12 @@ const dom = (() => {
     document.body.appendChild(sidebar);
 
     let upcoming = document.createElement("div")
-    upcoming.id = "upcoming"
+    upcoming.id = "upcomingNav"
     upcoming.innerHTML = "Upcoming Tasks"
     sidebar.appendChild(upcoming)
 
     let projects = document.createElement("div")
-    projects.id = "projects"
+    projects.id = "projectsNavDiv"
     projects.innerHTML = "Projects: "
     sidebar.appendChild(projects)
   }
@@ -46,7 +46,7 @@ const dom = (() => {
   
   const printProjects = (projectArray) => {
     //remove all printed projects
-    let projects = document.getElementById("projects")
+    let projects = document.getElementById("projectsNavDiv")
     while (projects.firstChild) {
       projects.removeChild(projects.firstChild)
     }
@@ -57,7 +57,7 @@ const dom = (() => {
 
     projectArray.forEach(project => {
       let projDiv = document.createElement("div")
-      projDiv.className = "projectDiv"
+      projDiv.className = "projectNav"
       projDiv.innerHTML = `${project.title}`
   
       projects.appendChild(projDiv)
@@ -66,20 +66,20 @@ const dom = (() => {
 
   const upcomingPage = (taskArray) => {
     let main = document.getElementById("main")
-    let upcomingTasksDiv = document.createElement("div")
-    upcomingTasksDiv.id = "upcomingTasks"
-    upcomingTasksDiv.innerHTML = "Upcoming Tasks:"
-    main.appendChild(upcomingTasksDiv)
+    let mainHeading = document.createElement("div")
+    mainHeading.id = "mainHeading"
+    mainHeading.innerHTML = "Upcoming Tasks:"
+    main.appendChild(mainHeading)
 
-    upcomingTasksDiv.appendChild(document.createElement("br"))
+    mainHeading.appendChild(document.createElement("br"))
     let newTaskButton = createTaskButton()
-    upcomingTasksDiv.appendChild(newTaskButton)
+    mainHeading.appendChild(newTaskButton)
 
     taskArray.forEach(task => {
       let taskDiv = document.createElement("div")
       taskDiv.className = "taskDiv"
       taskDiv.innerHTML = task.title
-      upcomingTasksDiv.appendChild(taskDiv)
+      mainHeading.appendChild(taskDiv)
     })
   }
   
