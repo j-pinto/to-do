@@ -1,24 +1,11 @@
 const dom = (() => {
-  const createMainDiv = () => {
-    let main = document.createElement("div")
-    document.body.appendChild(main)
-    main.id = "main"
-
-    let mainHeading = document.createElement("div")
-    mainHeading.id = "mainHeading"
-    main.appendChild(mainHeading)
-    mainHeading.appendChild(document.createElement("br"))
-
-    let taskButton = document.createElement("button")
-    taskButton.id = "newTaskButton"
-    taskButton.innerHTML = "New Task"
-    mainHeading.appendChild(taskButton)
-
-    let taskList = document.createElement("div")
-    taskList.id = "taskList"
-    main.appendChild(taskList)
+  const createTopbar = () => {
+    let topbar = document.createElement("div");
+    document.body.appendChild(topbar);
+    topbar.id = "topbar";
+    topbar.innerHTML = "ToDo";
   }
-  
+
   const createSidebar = () => {
     let sidebar = document.createElement("div");
     sidebar.id = "sidebar";
@@ -40,11 +27,24 @@ const dom = (() => {
     sidebar.appendChild(projButton)
   }
   
-  const createTopbar = () => {
-    let topbar = document.createElement("div");
-    document.body.appendChild(topbar);
-    topbar.id = "topbar";
-    topbar.innerHTML = "ToDo";
+  const createMainDiv = () => {
+    let main = document.createElement("div")
+    document.body.appendChild(main)
+    main.id = "main"
+
+    let mainHeading = document.createElement("div")
+    mainHeading.id = "mainHeading"
+    main.appendChild(mainHeading)
+    mainHeading.appendChild(document.createElement("br"))
+
+    let taskButton = document.createElement("button")
+    taskButton.id = "newTaskButton"
+    taskButton.innerHTML = "New Task"
+    mainHeading.appendChild(taskButton)
+
+    let taskList = document.createElement("div")
+    taskList.id = "taskList"
+    main.appendChild(taskList)
   }
   
   const printProjects = (projectArray) => {
