@@ -100,13 +100,19 @@ const dom = (() => {
     }
   }
 
+  const loadProject = (projectObject) => {
+    let headingTitle = document.getElementById("headingTitle")
+    headingTitle.innerHTML = `${projectObject.title}`
+    printTaskList(projectObject.tasks)
+  }
+
   const pageInit = () => {
     createTopbar();
     createSidebar();
     createMainDiv();
   }
   
-  return { pageInit, printProjectList, printTaskList }
+  return { pageInit, printProjectList, loadProject, printTaskList }
 })()
 
 export { dom }
