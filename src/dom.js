@@ -35,7 +35,10 @@ const dom = (() => {
     let mainHeading = document.createElement("div")
     mainHeading.id = "mainHeading"
     main.appendChild(mainHeading)
-    mainHeading.appendChild(document.createElement("br"))
+
+    let headingTitle = document.createElement("div")
+    headingTitle.id = "headingTitle"
+    mainHeading.appendChild(headingTitle)
 
     let taskButton = document.createElement("button")
     taskButton.id = "newTaskButton"
@@ -96,8 +99,6 @@ const dom = (() => {
       }
     }
   }
-
-  //const showTaskDetails = ()
 
   const pageInit = () => {
     createTopbar();
