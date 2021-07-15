@@ -76,21 +76,28 @@ const dom = (() => {
       taskListItem.className = "taskListItem"
       taskListItem.innerHTML = `${task.title}`
       taskList.appendChild(taskListItem)
-      addHiddenTaskDetails()
+      addHiddenTaskDetails(task)
     });
   }
   
   const addHiddenTaskDetails = (taskObject) => {
-    let taskList = document.getElementById("taskList")
+    let lastTaskListItem = document.getElementById("taskList").lastChild
 
     for (const property in taskObject) {
-      let taskDetail = document.createElement("div")
-      taskDetail.className = "taskDetail"
-      taskDetail.innerHTML = taskObject[property]
-      taskList.appendChild(taskDetail)
-      taskDetail.display = "none"
+      if (taskObject[property] == taskObject.title) {
+        continue
+      }
+      else {
+        let taskDetail = document.createElement("div")
+        taskDetail.className = "taskDetail"
+        taskDetail.innerHTML = taskObject[property]
+        lastTaskListItem.appendChild(taskDetail)
+        taskDetail.display = "none"
+      }
     }
   }
+
+  //const showTaskDetails = ()
 
   const pageInit = () => {
     createTopbar();
