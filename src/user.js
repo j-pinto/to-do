@@ -16,12 +16,12 @@ function User() {
     } else {
       this.name = parsedUser.name
       this.taskArray = parsedUser.tasks
-      this.projArray = parsedUser.projects
+      this.restoreProjects(parsedUser.projects)
     }
   }
 
   this.createProject = function(name) {
-    const project = new Project(name);
+    let project = new Project(name);
     this.projArray.push(project)
     this.sortProjectsByName()
 
@@ -46,6 +46,14 @@ function User() {
     storage.save(this)
   }
 
+  this.restoreProjects = function(parsedProjects) {
+    parsedProjects.forEach(proj => {
+      let restoredProj = new Project(proj.title)
+      restoredProj.tasks = proj.tasks
+      this.projArray.push(restoredProj)
+    })
+  }
+
   this.sortProjectsByName = function() {
     this.projArray.sort((a, b) => 
       a.title.localeCompare(b.title, 'en', 
@@ -56,8 +64,8 @@ function User() {
     storage.save(this)
   }
 
-  this.createTask = function(name, proj, due='', pri='', desc='') {
-    const task = new Task(name, proj, due, pri, desc);
+  this.createTask = function(name, proj, due, pri='', desc='') {
+    let task = new Task(name, proj, due, pri, desc);
     this.taskArray.push(task)
 
     let project = this.projArray.find(item => item.title == proj)
