@@ -95,7 +95,7 @@ const dom = (() => {
         taskDetail.className = "taskDetail"
         taskDetail.innerHTML = taskObject[property]
         lastTaskListItem.appendChild(taskDetail)
-        taskDetail.display = "none"
+        taskDetail.style.display = "none"
       }
     }
   }
