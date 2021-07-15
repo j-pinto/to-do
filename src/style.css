@@ -34,6 +34,6 @@ body {
   background-color: lightgray
 }
 
-#upcoming:hover, .projectDiv:hover {
+#upcoming:hover, .projectListItem:hover {
   background-color: lightgray;
 }
