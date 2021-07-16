@@ -16,6 +16,11 @@ const dom = (() => {
     upcoming.innerHTML = "Upcoming Tasks"
     sidebar.appendChild(upcoming)
 
+    let projHeading = document.createElement("div")
+    projHeading.id = "projectListHeading"
+    projHeading.innerHTML = "Projects:"
+    sidebar.appendChild(projHeading)
+
     let projButton = document.createElement("button")
     projButton.id = "newProjectButton"
     projButton.innerHTML = "New Project"
@@ -23,7 +28,6 @@ const dom = (() => {
 
     let projList = document.createElement("div")
     projList.id = "projectsList"
-    projList.innerHTML = "Projects: "
     sidebar.appendChild(projList)
   }
 
