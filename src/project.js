@@ -1,3 +1,5 @@
+import { compareAsc, parse } from 'date-fns';
+
 function Project(name) {
   this.title = name
   this.tasks = []
@@ -20,11 +22,9 @@ function Project(name) {
 
   this.sortTasksByDate = function() {
     this.tasks.sort((a,b) => {
-      if (a.dueDate < b.dueDate || a.dueDate == b.dueDate) {
-        return -1
-      } else {
-        return 1
-      }
+      let date1 = parse(a.dueDate, 'yyyy/MM/dd', new Date())
+      let date2 = parse(b.dueDate, 'yyyy/MM/dd', new Date())
+      return compareAsc(date1, date2)
     })
   }
 }
