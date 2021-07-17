@@ -71,6 +71,8 @@ const dom = (() => {
   }
 
   const printTaskList = (taskArray) => {
+    let headingTitle = document.getElementById("headingTitle")
+    headingTitle.innerHTML = `${taskArray[0].project}`
     // remove all currently printed tasks
     let taskList = document.getElementById("taskList")
     while (taskList.firstChild) {
