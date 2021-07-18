@@ -56,13 +56,7 @@ const dom = (() => {
   
   const printProjectList = (projectArray) => {
     clearList("projectList")
-
-    projectArray.forEach(project => {
-      let projectListItem = document.createElement("div")
-      projectListItem.className = "projectListItem"
-      projectListItem.innerHTML = `${project.title}`
-      projectList.appendChild(projectListItem)
-    });
+    printList(projectArray)
   }
 
   const printTaskList = (taskArray) => {
@@ -70,13 +64,19 @@ const dom = (() => {
     headingTitle.innerHTML = `${taskArray[0].project}`
     
     clearList("taskList")
+    printList(taskArray)
+  }
 
-    taskArray.forEach(task => {
-      let taskListItem = document.createElement("div")
-      taskListItem.className = "taskListItem"
-      taskListItem.innerHTML = `${task.title}`
-      taskList.appendChild(taskListItem)
-      addHiddenTaskDetails(task)
+  const printList = (arr) => {
+    let listIDString;
+    ('dueDate' in arr[0]) ? listIDString = "taskList" : listIDString = "projectList"
+    let list = document.getElementById(listIDString)
+
+    arr.forEach(item => {
+      let listItem = document.createElement("div")
+      listItem.className = `${listIDString}Item`
+      listItem.innerHTML = `${item.title}`
+      list.appendChild(listItem)
     });
   }
 
