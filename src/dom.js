@@ -95,6 +95,14 @@ const dom = (() => {
     }
   }
 
+  const makeSubheading = (textString) => {
+    let taskList = document.getElementById("taskList")  
+    let subHeading = document.createElement("div")
+    subHeading.className = "subHeading"
+    subHeading.innerHTML = textString
+    taskList.appendChild(subHeading)
+  }
+
   const printUpcomingTasks = (upcomingTasks) => {
     let headingTitle = document.getElementById("headingTitle")
     headingTitle.innerHTML = "Upcoming Tasks"
@@ -111,10 +119,7 @@ const dom = (() => {
     }
 
     if (upcomingTasks.past.length > 0) {
-      let subHeading = document.createElement("div")
-      subHeading.className = "subHeading"
-      subHeading.innerHTML = "Past due:"
-      taskList.appendChild(subHeading)
+      makeSubheading("Past Due:")
 
       upcomingTasks.past.forEach(task => {
         let taskListItem = document.createElement("div")
@@ -126,10 +131,7 @@ const dom = (() => {
     }
 
     if (upcomingTasks.day.length > 0) {
-      let subHeading = document.createElement("div")
-      subHeading.className = "subHeading"
-      subHeading.innerHTML = "Today:"
-      taskList.appendChild(subHeading)
+      makeSubheading("Today:")
 
       upcomingTasks.day.forEach(task => {
         let taskListItem = document.createElement("div")
@@ -141,10 +143,7 @@ const dom = (() => {
     }
 
     if (upcomingTasks.week.length > 0) {
-      let subHeading = document.createElement("div")
-      subHeading.className = "subHeading"
-      subHeading.innerHTML = "Next 7 days:"
-      taskList.appendChild(subHeading)
+      makeSubheading("Next 7 days:")
 
       upcomingTasks.week.forEach(task => {
         let taskListItem = document.createElement("div")
