@@ -1,11 +1,17 @@
 import { Task } from "./task.js";
 import { Project } from "./project.js";
 import { storage } from "./storage.js";
+import { differenceInCalendarDays, parse } from 'date-fns';
 
 function User() {
   this.name = ''
-  this.taskArray = []
   this.projArray = []
+  this.taskArray = []
+  this.upcomingTasks = {
+    past: [],
+    day: [],
+    week: []
+  }
 
   this.attemptLoad = function() {
     let parsedUser = storage.load()
@@ -82,6 +88,22 @@ function User() {
 
     let index = this.taskArray.indexOf(task)
     this.taskArray.splice(index, 1)
+  }
+
+  this.generateUpcomingTasks = function() {
+    this.taskArray.forEach(task => {
+      let dueDate = parse(task.dueDate, 'yyyy/MM/dd', new Date())
+      let diff = differenceInCalendarDays(dueDate, new Date())
+      if (diff < 0 ) {
+        this.upcomingTasks.past.push(task)
+      } 
+      else if (diff == 0){
+        this.upcomingTasks.day.push(task)
+      } 
+      else if (diff > 0 && diff <= 7){
+        this.upcomingTasks.week.push(task)
+      }
+    });
   }
 }
 
