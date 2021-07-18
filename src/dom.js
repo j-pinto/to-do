@@ -68,15 +68,23 @@ const dom = (() => {
   }
 
   const printList = (arr) => {
+    let isTask;
     let listIDString;
-    ('dueDate' in arr[0]) ? listIDString = "taskList" : listIDString = "projectList"
-    let list = document.getElementById(listIDString)
+    if ('dueDate' in arr[0]) {
+      isTask = true
+      listIDString = "taskList"
+    } else {
+      isTask = false
+      listIDString = "projectList"
+    }
 
+    let list = document.getElementById(listIDString)
     arr.forEach(item => {
       let listItem = document.createElement("div")
       listItem.className = `${listIDString}Item`
       listItem.innerHTML = `${item.title}`
       list.appendChild(listItem)
+      if (isTask) { addHiddenTaskDetails(item) }
     });
   }
 
