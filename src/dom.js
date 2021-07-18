@@ -27,7 +27,7 @@ const dom = (() => {
     sidebar.appendChild(projButton)
 
     let projList = document.createElement("div")
-    projList.id = "projectsList"
+    projList.id = "projectList"
     sidebar.appendChild(projList)
   }
 
@@ -55,13 +55,8 @@ const dom = (() => {
   }
   
   const printProjectList = (projectArray) => {
-    // remove all currently printed projects
-    let projectList = document.getElementById("projectsList")
-    while (projectList.firstChild) {
-      projectList.removeChild(projectList.firstChild)
-    }
+    clearList("projectList")
 
-    // re-print
     projectArray.forEach(project => {
       let projectListItem = document.createElement("div")
       projectListItem.className = "projectListItem"
@@ -73,13 +68,9 @@ const dom = (() => {
   const printTaskList = (taskArray) => {
     let headingTitle = document.getElementById("headingTitle")
     headingTitle.innerHTML = `${taskArray[0].project}`
-    // remove all currently printed tasks
-    let taskList = document.getElementById("taskList")
-    while (taskList.firstChild) {
-      taskList.removeChild(taskList.firstChild)
-    }
+    
+    clearList("taskList")
 
-    // re-print
     taskArray.forEach(task => {
       let taskListItem = document.createElement("div")
       taskListItem.className = "taskListItem"
@@ -87,6 +78,13 @@ const dom = (() => {
       taskList.appendChild(taskListItem)
       addHiddenTaskDetails(task)
     });
+  }
+
+  const clearList = (listIDString) => {
+    let list = document.getElementById(listIDString)
+    while (list.firstChild) {
+      list.removeChild(list.firstChild)
+    }
   }
 
   const printUpcomingTasks = (upcomingTasks) => {
