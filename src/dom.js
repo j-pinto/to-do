@@ -88,6 +88,67 @@ const dom = (() => {
       addHiddenTaskDetails(task)
     });
   }
+
+  const printUpcomingTasks = (upcomingTasks) => {
+    let headingTitle = document.getElementById("headingTitle")
+    headingTitle.innerHTML = "Upcoming Tasks"
+
+    let taskList = document.getElementById("taskList")
+    while (taskList.firstChild) {
+      taskList.removeChild(taskList.firstChild)
+    }
+
+    if (upcomingTasks.past.length == 0 && upcomingTasks.day.length == 0 &&
+        upcomingTasks.week.length == 0) 
+    {
+      taskList.innerHTML = "No upcoming tasks this week."
+    }
+
+    if (upcomingTasks.past.length > 0) {
+      let subHeading = document.createElement("div")
+      subHeading.className = "subHeading"
+      subHeading.innerHTML = "Past due:"
+      taskList.appendChild(subHeading)
+
+      upcomingTasks.past.forEach(task => {
+        let taskListItem = document.createElement("div")
+        taskListItem.className = "taskListItem"
+        taskListItem.innerHTML = `${task.title}`
+        taskList.appendChild(taskListItem)
+        addHiddenTaskDetails(task)
+      });
+    }
+
+    if (upcomingTasks.day.length > 0) {
+      let subHeading = document.createElement("div")
+      subHeading.className = "subHeading"
+      subHeading.innerHTML = "Today:"
+      taskList.appendChild(subHeading)
+
+      upcomingTasks.day.forEach(task => {
+        let taskListItem = document.createElement("div")
+        taskListItem.className = "taskListItem"
+        taskListItem.innerHTML = `${task.title}`
+        taskList.appendChild(taskListItem)
+        addHiddenTaskDetails(task)
+      });
+    }
+
+    if (upcomingTasks.week.length > 0) {
+      let subHeading = document.createElement("div")
+      subHeading.className = "subHeading"
+      subHeading.innerHTML = "Next 7 days:"
+      taskList.appendChild(subHeading)
+
+      upcomingTasks.week.forEach(task => {
+        let taskListItem = document.createElement("div")
+        taskListItem.className = "taskListItem"
+        taskListItem.innerHTML = `${task.title}`
+        taskList.appendChild(taskListItem)
+        addHiddenTaskDetails(task)
+      });
+    }
+  }
   
   const addHiddenTaskDetails = (taskObject) => {
     let lastTaskListItem = document.getElementById("taskList").lastChild
@@ -118,7 +179,14 @@ const dom = (() => {
     createMainDiv();
   }
   
-  return { pageInit, printProjectList, loadProject, printTaskList }
+  return { 
+    pageInit,
+    loadProject, 
+    printProjectList,  
+    printTaskList,
+    printUpcomingTasks 
+  }
+  
 })()
 
 export { dom }
