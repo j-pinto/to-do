@@ -107,10 +107,7 @@ const dom = (() => {
     let headingTitle = document.getElementById("headingTitle")
     headingTitle.innerHTML = "Upcoming Tasks"
 
-    let taskList = document.getElementById("taskList")
-    while (taskList.firstChild) {
-      taskList.removeChild(taskList.firstChild)
-    }
+    clearList("taskList")
 
     if (upcomingTasks.past.length == 0 && upcomingTasks.day.length == 0 &&
         upcomingTasks.week.length == 0) 
@@ -120,38 +117,17 @@ const dom = (() => {
 
     if (upcomingTasks.past.length > 0) {
       makeSubheading("Past Due:")
-
-      upcomingTasks.past.forEach(task => {
-        let taskListItem = document.createElement("div")
-        taskListItem.className = "taskListItem"
-        taskListItem.innerHTML = `${task.title}`
-        taskList.appendChild(taskListItem)
-        addHiddenTaskDetails(task)
-      });
+      printList(upcomingTasks.past)
     }
 
     if (upcomingTasks.day.length > 0) {
       makeSubheading("Today:")
-
-      upcomingTasks.day.forEach(task => {
-        let taskListItem = document.createElement("div")
-        taskListItem.className = "taskListItem"
-        taskListItem.innerHTML = `${task.title}`
-        taskList.appendChild(taskListItem)
-        addHiddenTaskDetails(task)
-      });
+      printList(upcomingTasks.day)
     }
 
     if (upcomingTasks.week.length > 0) {
       makeSubheading("Next 7 days:")
-
-      upcomingTasks.week.forEach(task => {
-        let taskListItem = document.createElement("div")
-        taskListItem.className = "taskListItem"
-        taskListItem.innerHTML = `${task.title}`
-        taskList.appendChild(taskListItem)
-        addHiddenTaskDetails(task)
-      });
+      printList(upcomingTasks.week)
     }
   }
   
