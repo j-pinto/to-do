@@ -9,7 +9,7 @@ html, body {
 body {
   display: grid;
   grid-template-rows: 1fr 10fr;
-  grid-template-columns: 1fr 7fr;
+  grid-template-columns: 2fr 7fr;
 
   grid-template-areas: 
     "topbar topbar"
@@ -34,10 +34,12 @@ body {
 
 #upcoming, #projectListHeading {
   font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .projectListItem {
   font-size: 15px;
+  margin-top: 5px;
 }
 
 #main {
@@ -54,14 +56,19 @@ body {
 
 #headingTitle {
   font-size: 30px;
+  margin-bottom: 15px;
 }
 
 .subHeading {
   font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .taskListItem {
   font-size: 15px;
+  margin-bottom: 5px;
+  margin-left: 15px;
 }
 
 #upcoming:hover, .projectListItem:hover {
