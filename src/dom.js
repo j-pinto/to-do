@@ -44,20 +44,24 @@ const dom = (() => {
     headingTitle.id = "headingTitle"
     mainHeading.appendChild(headingTitle)
 
+    let buttonDiv = document.createElement("div")
+    buttonDiv.id = "buttonDiv"
+    mainHeading.appendChild(buttonDiv)
+
     let taskButton = document.createElement("button")
     taskButton.id = "newTaskButton"
     taskButton.innerHTML = "New Task"
-    mainHeading.appendChild(taskButton)
+    buttonDiv.appendChild(taskButton)
 
     let editButton = document.createElement("button")
     editButton.id = "editProjectButton"
     editButton.innerHTML = "Edit Project"
-    mainHeading.appendChild(editButton)
+    buttonDiv.appendChild(editButton)
 
     let deleteButton = document.createElement("button")
     deleteButton.id = "deleteProjectButton"
     deleteButton.innerHTML = "Delete Project"
-    mainHeading.appendChild(deleteButton)
+    buttonDiv.appendChild(deleteButton)
 
     let taskList = document.createElement("div")
     taskList.id = "taskList"
