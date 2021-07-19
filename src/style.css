@@ -19,6 +19,7 @@ body {
 #topbar {
   grid-area: topbar; 
   background-color: lightslategray;
+  padding: 30px;
 }
 
 #sidebar {
@@ -27,11 +28,13 @@ body {
 
   display: flex;
   flex-direction: column;
+  padding: 30px;
 }
 
 #main {
   grid-area: main;
   background-color: lightgray;
+  padding: 30px;
 }
 
 #mainHeading {
