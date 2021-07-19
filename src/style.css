@@ -31,7 +31,13 @@ body {
 
 #main {
   grid-area: main;
-  background-color: lightgray
+  background-color: lightgray;
+}
+
+#mainHeading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 #upcoming:hover, .projectListItem:hover {
