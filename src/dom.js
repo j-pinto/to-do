@@ -49,6 +49,16 @@ const dom = (() => {
     taskButton.innerHTML = "New Task"
     mainHeading.appendChild(taskButton)
 
+    let editButton = document.createElement("button")
+    editButton.id = "editProjectButton"
+    editButton.innerHTML = "Edit Project"
+    mainHeading.appendChild(editButton)
+
+    let deleteButton = document.createElement("button")
+    deleteButton.id = "deleteProjectButton"
+    deleteButton.innerHTML = "Delete Project"
+    mainHeading.appendChild(deleteButton)
+
     let taskList = document.createElement("div")
     taskList.id = "taskList"
     main.appendChild(taskList)
