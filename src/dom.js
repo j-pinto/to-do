@@ -148,12 +148,6 @@ const dom = (() => {
     }
   }
 
-  const loadProject = (projectObject) => {
-    let headingTitle = document.getElementById("headingTitle")
-    headingTitle.innerHTML = `${projectObject.title}`
-    printTaskList(projectObject.tasks)
-  }
-
   const pageInit = () => {
     createTopbar();
     createSidebar();
@@ -162,7 +156,6 @@ const dom = (() => {
   
   return { 
     pageInit,
-    loadProject, 
     printProjectList,  
     printTaskList,
     printUpcomingTasks 
