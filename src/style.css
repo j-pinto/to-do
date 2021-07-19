@@ -20,6 +20,7 @@ body {
   grid-area: topbar; 
   background-color: lightslategray;
   padding: 30px;
+  font-size: 50px;
 }
 
 #sidebar {
@@ -29,6 +30,14 @@ body {
   display: flex;
   flex-direction: column;
   padding: 30px;
+}
+
+#upcoming, #projectListHeading {
+  font-size: 20px;
+}
+
+.projectListItem {
+  font-size: 15px;
 }
 
 #main {
@@ -41,6 +50,18 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+#headingTitle {
+  font-size: 30px;
+}
+
+.subHeading {
+  font-size: 20px;
+}
+
+.taskListItem {
+  font-size: 15px;
 }
 
 #upcoming:hover, .projectListItem:hover {
