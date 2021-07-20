@@ -1,7 +1,7 @@
 import { Task } from "./task.js";
 import { Project } from "./project.js";
 import { storage } from "./storage.js";
-import { differenceInCalendarDays, parse } from 'date-fns';
+import { differenceInCalendarDays, parse, compareAsc } from 'date-fns';
 
 function User() {
   this.name = ''
@@ -104,6 +104,18 @@ function User() {
         this.upcomingTasks.week.push(task)
       }
     });
+
+    this.sortTasksByDate(this.upcomingTasks.past)
+    this.sortTasksByDate(this.upcomingTasks.day)
+    this.sortTasksByDate(this.upcomingTasks.week)
+  }
+
+  this.sortTasksByDate = function(array) {
+    array.sort((a,b) => {
+      let date1 = parse(a.dueDate, 'yyyy/MM/dd', new Date())
+      let date2 = parse(b.dueDate, 'yyyy/MM/dd', new Date())
+      return compareAsc(date1, date2)
+    })
   }
 }
 
