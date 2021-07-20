@@ -152,23 +152,6 @@ const dom = (() => {
       printList(upcomingTasks.week)
     }
   }
-  
-  const addHiddenTaskDetails = (taskObject) => {
-    let lastTaskListItem = document.getElementById("taskList").lastChild
-
-    for (const property in taskObject) {
-      if (taskObject[property] == taskObject.title) {
-        continue
-      }
-      else {
-        let taskDetail = document.createElement("div")
-        taskDetail.className = "taskDetail"
-        taskDetail.innerHTML = taskObject[property]
-        lastTaskListItem.appendChild(taskDetail)
-        taskDetail.style.display = "none"
-      }
-    }
-  }
 
   const pageInit = () => {
     createTopbar();
