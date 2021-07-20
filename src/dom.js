@@ -1,3 +1,4 @@
+import { format, parse } from 'date-fns';
 const dom = (() => {
   const createTopbar = () => {
     let topbar = document.createElement("div");
@@ -93,20 +94,28 @@ const dom = (() => {
     }
 
     let list = document.getElementById(listIDString)
+
     arr.forEach(item => {
       let listItem = document.createElement("div")
       listItem.className = `${listIDString}Item`
       list.appendChild(listItem)
 
-      if (isTask) {
-        let checkbox = document.createElement("input")
-        checkbox.setAttribute("type", "checkbox")
-        listItem.appendChild(checkbox)
-      }
-
       let listItemText = document.createElement("div")
       listItemText.innerHTML = `${item.title}`
       listItem.appendChild(listItemText)
+
+      if (isTask) {
+        let checkbox = document.createElement("input")
+        checkbox.setAttribute("type", "checkbox")
+        listItem.insertBefore(checkbox, listItemText)
+
+        let date = parse(item.dueDate, 'yyyy/MM/dd', new Date()) 
+        date = format(date, 'MMM do, yyyy')
+        let dateDiv = document.createElement("div")
+        dateDiv.id = "date"
+        dateDiv.innerHTML = date 
+        listItem.appendChild(dateDiv)
+      }
     });
   }
 
