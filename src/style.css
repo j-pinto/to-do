@@ -78,6 +78,10 @@ body {
   border-bottom-width: 1px;
 }
 
+#date {
+  margin-left: 150px;
+}
+
 #upcoming:hover, .projectListItem:hover {
   background-color: lightgray;
 }
