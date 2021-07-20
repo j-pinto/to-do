@@ -101,6 +101,7 @@ const dom = (() => {
       list.appendChild(listItem)
 
       let listItemText = document.createElement("div")
+      listItemText.className = `${listIDString}ItemText`
       listItemText.innerHTML = `${item.title}`
       listItem.appendChild(listItemText)
 
@@ -119,21 +120,21 @@ const dom = (() => {
     let date = parse(task.dueDate, 'yyyy/MM/dd', new Date()) 
     date = format(date, 'MMM do, yyyy')
     let dateDiv = document.createElement("div")
-    dateDiv.id = "date"
+    dateDiv.className = "date"
     dateDiv.innerHTML = date 
     listItem.appendChild(dateDiv)
 
     let buttonDiv = document.createElement("div")
-    buttonDiv.id = "taskButtonDiv"
+    buttonDiv.className = "taskButtonDiv"
     listItem.appendChild(buttonDiv)
-      
+
     let editButton = document.createElement("button")
-    editButton.id = "editTaskButton"
+    editButton.className = "editTaskButton"
     editButton.innerHTML = "Edit"
     buttonDiv.appendChild(editButton)
-      
+
     let deleteButton = document.createElement("button")
-    deleteButton.id = "deleteTaskButton"
+    deleteButton.className = "deleteTaskButton"
     deleteButton.innerHTML = "Delete"
     buttonDiv.appendChild(deleteButton)
   }

@@ -69,7 +69,7 @@ body {
 .taskListItem {
   font-size: 15px;
   margin-bottom: 5px;
-  margin-left: 15px;
+  margin-left: 20px;
 
   display: flex;
 
@@ -80,6 +80,10 @@ body {
 
 .checkbox {
   margin-right: 20px;
+}
+
+.taskListItemText, .date {
+  margin-right: 100px;
 }
 
 #upcoming:hover, .projectListItem:hover {
