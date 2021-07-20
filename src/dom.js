@@ -122,6 +122,20 @@ const dom = (() => {
     dateDiv.id = "date"
     dateDiv.innerHTML = date 
     listItem.appendChild(dateDiv)
+
+    let buttonDiv = document.createElement("div")
+    buttonDiv.id = "taskButtonDiv"
+    listItem.appendChild(buttonDiv)
+      
+    let editButton = document.createElement("button")
+    editButton.id = "editTaskButton"
+    editButton.innerHTML = "Edit"
+    buttonDiv.appendChild(editButton)
+      
+    let deleteButton = document.createElement("button")
+    deleteButton.id = "deleteTaskButton"
+    deleteButton.innerHTML = "Delete"
+    buttonDiv.appendChild(deleteButton)
   }
 
   const clearList = (listIDString) => {
