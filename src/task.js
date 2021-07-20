@@ -1,10 +1,8 @@
 import { format } from 'date-fns'
 
-function Task(name, proj, dateObject, pri='', desc='') {
+function Task(name, proj, dateObject) {
   this.title = name
-  this.description = desc
   this.dueDate = format(dateObject,'yyyy/MM/dd')
-  this.priority = pri
   this.project = proj
 }
 
