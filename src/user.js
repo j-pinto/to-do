@@ -105,17 +105,17 @@ function User() {
       }
     });
 
-    this.sortTasksByDate(this.upcomingTasks.past)
-    this.sortTasksByDate(this.upcomingTasks.day)
-    this.sortTasksByDate(this.upcomingTasks.week)
+    this.sortUpcomingByDate()
   }
 
-  this.sortTasksByDate = function(array) {
-    array.sort((a,b) => {
-      let date1 = parse(a.dueDate, 'yyyy/MM/dd', new Date())
-      let date2 = parse(b.dueDate, 'yyyy/MM/dd', new Date())
-      return compareAsc(date1, date2)
-    })
+  this.sortUpcomingByDate = function() {
+    for (const property in this.upcomingTasks) {
+      this.upcomingTasks[property].sort((a,b) => {
+        let date1 = parse(a.dueDate, 'yyyy/MM/dd', new Date())
+        let date2 = parse(b.dueDate, 'yyyy/MM/dd', new Date())
+        return compareAsc(date1, date2)
+      })
+    }
   }
 }
 
