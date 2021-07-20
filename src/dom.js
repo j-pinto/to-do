@@ -96,9 +96,17 @@ const dom = (() => {
     arr.forEach(item => {
       let listItem = document.createElement("div")
       listItem.className = `${listIDString}Item`
-      listItem.innerHTML = `${item.title}`
       list.appendChild(listItem)
-      if (isTask) { addHiddenTaskDetails(item) }
+
+      if (isTask) {
+        let checkbox = document.createElement("input")
+        checkbox.setAttribute("type", "checkbox")
+        listItem.appendChild(checkbox)
+      }
+
+      let listItemText = document.createElement("div")
+      listItemText.innerHTML = `${item.title}`
+      listItem.appendChild(listItemText)
     });
   }
 

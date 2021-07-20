@@ -71,6 +71,8 @@ body {
   margin-bottom: 5px;
   margin-left: 15px;
 
+  display: flex;
+
   border-bottom-color: black;
   border-bottom-style: solid;
   border-bottom-width: 1px;
