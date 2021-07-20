@@ -78,8 +78,8 @@ body {
   border-bottom-width: 1px;
 }
 
-#date {
-  margin-left: 150px;
+.checkbox {
+  margin-right: 20px;
 }
 
 #upcoming:hover, .projectListItem:hover {

@@ -46,7 +46,7 @@ const dom = (() => {
     mainHeading.appendChild(headingTitle)
 
     let buttonDiv = document.createElement("div")
-    buttonDiv.id = "buttonDiv"
+    buttonDiv.id = "mainButtonDiv"
     mainHeading.appendChild(buttonDiv)
 
     let taskButton = document.createElement("button")
@@ -105,18 +105,23 @@ const dom = (() => {
       listItem.appendChild(listItemText)
 
       if (isTask) {
-        let checkbox = document.createElement("input")
-        checkbox.setAttribute("type", "checkbox")
-        listItem.insertBefore(checkbox, listItemText)
-
-        let date = parse(item.dueDate, 'yyyy/MM/dd', new Date()) 
-        date = format(date, 'MMM do, yyyy')
-        let dateDiv = document.createElement("div")
-        dateDiv.id = "date"
-        dateDiv.innerHTML = date 
-        listItem.appendChild(dateDiv)
+        printTaskDetails(item, listItem, listItemText)
       }
     });
+  }
+
+  const printTaskDetails = (task, listItem, listItemText) => {
+    let checkbox = document.createElement("input")
+    checkbox.setAttribute("type", "checkbox")
+    checkbox.className = "checkbox"
+    listItem.insertBefore(checkbox, listItemText)
+
+    let date = parse(task.dueDate, 'yyyy/MM/dd', new Date()) 
+    date = format(date, 'MMM do, yyyy')
+    let dateDiv = document.createElement("div")
+    dateDiv.id = "date"
+    dateDiv.innerHTML = date 
+    listItem.appendChild(dateDiv)
   }
 
   const clearList = (listIDString) => {
