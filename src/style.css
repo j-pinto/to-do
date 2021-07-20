@@ -70,6 +70,10 @@ body {
   font-size: 15px;
   margin-bottom: 5px;
   margin-left: 15px;
+
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
 }
 
 #upcoming:hover, .projectListItem:hover {
