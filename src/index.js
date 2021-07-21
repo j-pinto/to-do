@@ -26,6 +26,42 @@ const input = (function(){
     dom.printUpcomingTasks(user.upcomingTasks)
   }
 
+  const projectControlListeners = function(){
+    let newButton = document.getElementById("newProjectButton")
+    newButton.addEventListener("click", function() {
+      //TODO
+      return
+    })
+    let editButton = document.getElementById("editProjectButton")
+    editButton.addEventListener("click", function() {
+      //TODO
+      return
+    })
+    let deleteButton = document.getElementById("deleteProjectButton")
+    deleteButton.addEventListener("click", function() {
+      //TODO
+      return
+    })
+  }
+
+  const taskControlListeners = function(){
+    let newButton = document.getElementById("newTaskButton")
+    newButton.addEventListener("click", function() {
+      //TODO
+      return
+    })
+    let editButton = document.getElementById("editTaskButton")
+    editButton.addEventListener("click", function() {
+      //TODO
+      return
+    })
+    let deleteButton = document.getElementById("deleteTaskButton")
+    deleteButton.addEventListener("click", function() {
+      //TODO
+      return
+    })
+  }
+
   return {
     refreshProjectListeners
   }
