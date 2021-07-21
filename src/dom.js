@@ -200,7 +200,24 @@ const dom = (() => {
     let main = document.getElementById("main")
     main.appendChild(modalContainer)
     modalContainer.appendChild(modalContent)
+
+    createModalProjectEntry()
     createModalButtons()
+  }
+
+  const createModalProjectEntry = () => {
+    let projectEntryDiv = document.createElement("div")
+    projectEntryDiv.id = "projectEntryDiv"
+    projectEntryDiv.style.display = "none"
+
+    let textBox = document.createElement("input")
+    textBox.setAttribute("type", "text")
+    textBox.setAttribute("placeholder", "Enter Project Name")
+    textBox.id = "projectNameInput"
+    projectEntryDiv.appendChild(textBox)
+
+    let modalContent = document.getElementById("modalContent")
+    modalContent.appendChild(projectEntryDiv)
   }
 
   const createModalButtons = () => {
@@ -232,4 +249,3 @@ const dom = (() => {
 })()
 
 export { dom }
-
