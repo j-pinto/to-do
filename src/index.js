@@ -14,7 +14,7 @@ const input = (function(){
     upcoming.addEventListener('click', displayUpcoming)
   }
   
-  const displaySelectedPoject = function(){
+  const displaySelectedPoject = function(event){
     let selectedProject = user.projArray.find( item => 
       item.title == event.target.innerHTML
       )
