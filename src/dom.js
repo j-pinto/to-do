@@ -277,11 +277,53 @@ const dom = (() => {
     buttonDiv.appendChild(cancelButton)
   }
 
+  const showProjectModal = () => {
+    let modalContainer = document.getElementById("modalContainer")
+    modalContainer.style.display = "block"
+    let projectEntryDiv = document.getElementById("projectEntryDiv")
+    projectEntryDiv.style.display = "block"
+  }
+  
+  const clearProjectModal = () => {
+    let modalContainer = document.getElementById("modalContainer")
+    modalContainer.style.display = "none"
+    let projectEntryDiv = document.getElementById("projectEntryDiv")
+    projectEntryDiv.style.display = "none"
+    let textBox = document.getElementById("projectNameInput")
+    textBox.value = ""
+  }
+
+  const showTaskModal = (projectArray) => {
+    let modalContainer = document.getElementById("modalContainer")
+    modalContainer.style.display = "block"
+    let taskEntryDiv = document.getElementById("taskEntryDiv")
+    taskEntryDiv.style.display = "block"
+
+    let projectSelect = document.getElementById("projectSelect")
+    projectArray.forEach(proj => {
+      let option = document.createElement("option")
+      option.value = proj.title
+      option.innerHTML = `${proj.title}`
+      projectSelect.appendChild(option)
+    })
+  }
+  
+  const clearTaskModal = () => {
+    let modalContainer = document.getElementById("modalContainer")
+    modalContainer.style.display = "none"
+    let taskEntryDiv = document.getElementById("taskEntryDiv")
+    taskEntryDiv.style.display = "none"
+    let textBox = document.getElementById("taskNameInput")
+    textBox.value = ""
+  }
+
   return { 
     pageInit,
     printProjectList,  
     printTaskList,
     printUpcomingTasks,
+    showProjectModal,
+    clearProjectModal,
     showTaskModal,
     clearTaskModal
   }
