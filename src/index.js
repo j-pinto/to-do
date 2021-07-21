@@ -4,7 +4,7 @@ import { User } from "./user.js";
 
 const input = (function(){
 
-  const refreshProjectListeners = function(){
+  const projectDisplayListeners = function(){
     let projects = document.getElementsByClassName("projectListItem")
     for (let i=0; i < projects.length; i++) {
       projects[i].addEventListener('click', displaySelectedPoject)
@@ -63,7 +63,9 @@ const input = (function(){
   }
 
   return {
-    refreshProjectListeners
+    projectDisplayListeners,
+    projectControlListeners,
+    taskControlListeners
   }
 })();
 
@@ -74,4 +76,4 @@ user.generateUpcomingTasks()
 dom.pageInit();
 dom.printProjectList(user.projArray)
 
-input.refreshProjectListeners()
+input.projectDisplayListeners()
