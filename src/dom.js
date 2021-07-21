@@ -202,6 +202,7 @@ const dom = (() => {
     modalContainer.appendChild(modalContent)
 
     createModalProjectEntry()
+    createModalTaskEntry()
     createModalButtons()
   }
 
@@ -218,6 +219,43 @@ const dom = (() => {
 
     let modalContent = document.getElementById("modalContent")
     modalContent.appendChild(projectEntryDiv)
+  }
+
+  const createModalTaskEntry = () => {
+    let taskEntryDiv = document.createElement("div")
+    taskEntryDiv.id = "taskEntryDiv"
+    //taskEntryDiv.style.display = "none"
+
+    let textBox = document.createElement("input")
+    textBox.setAttribute("type", "text")
+    textBox.setAttribute("placeholder", "Enter Task Name")
+    textBox.id = "taskNameInput"
+    taskEntryDiv.appendChild(textBox)
+    taskEntryDiv.appendChild(document.createElement("br"))
+
+    let dateLabel = document.createElement("label")
+    dateLabel.setAttribute("for", "dateInput")
+    dateLabel.innerHTML = "Due Date:"
+    taskEntryDiv.appendChild(dateLabel)
+
+    let dateEntry = document.createElement("input")
+    dateEntry.setAttribute("type", "date")
+    dateEntry.id = "dateInput"
+    taskEntryDiv.appendChild(dateEntry)
+    taskEntryDiv.appendChild(document.createElement("br"))
+
+    let projectSelectLabel = document.createElement("label")
+    projectSelectLabel.setAttribute("for", "projectSelect")
+    projectSelectLabel.innerHTML = "Assign to Project:"
+    taskEntryDiv.appendChild(projectSelectLabel)
+
+    let projectSelect = document.createElement("select")
+    projectSelect.name = "projectSelect"
+    projectSelect.id = "projectSelect"
+    taskEntryDiv.appendChild(projectSelect)
+
+    let modalContent = document.getElementById("modalContent")
+    modalContent.appendChild(taskEntryDiv)
   }
 
   const createModalButtons = () => {
@@ -243,7 +281,9 @@ const dom = (() => {
     pageInit,
     printProjectList,  
     printTaskList,
-    printUpcomingTasks
+    printUpcomingTasks,
+    showTaskModal,
+    clearTaskModal
   }
   
 })()
