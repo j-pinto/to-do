@@ -190,23 +190,41 @@ const dom = (() => {
   
   const createModal = () => {
     let modalContainer = document.createElement("div")
-    modalContainer.className = "modalContainer"
-    modalContainer.style.display = "block"
+    modalContainer.id = "modalContainer"
 
     let modalContent = document.createElement("div")
-    modalContent.className = "modalContent"
-    modalContent.innerHTML = "Test content"
+    modalContent.id = "modalContent"
 
     let main = document.getElementById("main")
     main.appendChild(modalContainer)
     modalContainer.appendChild(modalContent)
+    createModalButtons()
+  }
+
+  const createModalButtons = () => {
+    let buttonDiv = document.createElement("div")
+    buttonDiv.id = "modalButtonDiv"
+
+    let modalContent = document.getElementById("modalContent")
+    modalContent.appendChild(buttonDiv)
+
+    let acceptButton = document.createElement("button")
+    acceptButton.id = "acceptButton"
+    acceptButton.innerHTML = "Enter"
+    
+    let cancelButton = document.createElement("button")
+    cancelButton.id = "cancelButton"
+    cancelButton.innerHTML = "Cancel"
+
+    buttonDiv.appendChild(acceptButton)
+    buttonDiv.appendChild(cancelButton)
   }
 
   return { 
     pageInit,
     printProjectList,  
     printTaskList,
-    printUpcomingTasks 
+    printUpcomingTasks
   }
   
 })()
