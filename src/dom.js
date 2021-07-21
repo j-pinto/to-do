@@ -188,6 +188,20 @@ const dom = (() => {
     createMainDiv();
   }
   
+  const createModal = () => {
+    let modalContainer = document.createElement("div")
+    modalContainer.className = "modalContainer"
+    modalContainer.style.display = "block"
+
+    let modalContent = document.createElement("div")
+    modalContent.className = "modalContent"
+    modalContent.innerHTML = "Test content"
+
+    let main = document.getElementById("main")
+    main.appendChild(modalContainer)
+    modalContainer.appendChild(modalContent)
+  }
+
   return { 
     pageInit,
     printProjectList,  
