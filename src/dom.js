@@ -186,11 +186,13 @@ const dom = (() => {
     createTopbar();
     createSidebar();
     createMainDiv();
+    createModal();
   }
   
   const createModal = () => {
     let modalContainer = document.createElement("div")
     modalContainer.id = "modalContainer"
+    modalContainer.style.display = "none"
 
     let modalContent = document.createElement("div")
     modalContent.id = "modalContent"
