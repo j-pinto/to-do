@@ -287,7 +287,7 @@ const dom = (() => {
     let cancelButton = document.getElementById("cancelButton")
     window.onclick = function(event) {
       if (event.target == modalContainer || event.target == cancelButton) {
-        clearTaskModal()
+        clearModal()
       }
     }
   }
@@ -309,7 +309,7 @@ const dom = (() => {
     let cancelButton = document.getElementById("cancelButton")
     window.onclick = function(event) {
       if (event.target == modalContainer || event.target == cancelButton) {
-        clearTaskModal()
+        clearModal()
       }
     }
   }
