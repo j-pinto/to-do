@@ -325,6 +325,11 @@ const dom = (() => {
     document.getElementById("dateInput").value = ""
     document.getElementById("projectNameInput").value = ""
     document.getElementById("taskNameInput").value = ""
+
+    let projectSelect = document.getElementById("projectSelect")
+    while (projectSelect.firstChild) {
+      projectSelect.removeChild(projectSelect.firstChild)
+    }
   }
 
   return { 
