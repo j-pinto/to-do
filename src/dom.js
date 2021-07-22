@@ -1,4 +1,5 @@
 import { format, parse } from 'date-fns';
+
 const dom = (() => {
   const createTopbar = () => {
     let topbar = document.createElement("div");
@@ -290,15 +291,6 @@ const dom = (() => {
       }
     }
   }
-  
-  const clearProjectModal = () => {
-    let modalContainer = document.getElementById("modalContainer")
-    modalContainer.style.display = "none"
-    let projectEntryDiv = document.getElementById("projectEntryDiv")
-    projectEntryDiv.style.display = "none"
-    let textBox = document.getElementById("projectNameInput")
-    textBox.value = ""
-  }
 
   const showTaskModal = (projectArray) => {
     let modalContainer = document.getElementById("modalContainer")
@@ -322,13 +314,17 @@ const dom = (() => {
     }
   }
   
-  const clearTaskModal = () => {
+  const clearModal = () => {
     let modalContainer = document.getElementById("modalContainer")
     modalContainer.style.display = "none"
+    let projectEntryDiv = document.getElementById("projectEntryDiv")
+    projectEntryDiv.style.display = "none"
     let taskEntryDiv = document.getElementById("taskEntryDiv")
     taskEntryDiv.style.display = "none"
-    let textBox = document.getElementById("taskNameInput")
-    textBox.value = ""
+
+    document.getElementById("dateInput").value = ""
+    document.getElementById("projectNameInput").value = ""
+    document.getElementById("taskNameInput").value = ""
   }
 
   return { 
@@ -337,9 +333,8 @@ const dom = (() => {
     printTaskList,
     printUpcomingTasks,
     showProjectModal,
-    clearProjectModal,
     showTaskModal,
-    clearTaskModal
+    clearModal
   }
   
 })()
