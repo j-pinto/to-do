@@ -26,17 +26,35 @@ const input = (function(){
     dom.printUpcomingTasks(user.upcomingTasks)
   }
 
-  const projectControlListeners = function(){
+  const projectControlListeners = function() {
+    newProjectListener()
+    editProjectListener()
+    deleteProjectListener()
+  }
+
+  const taskControlListeners = function() {
+    newTaskListener()
+    editTaskListener()
+    deleteTaskListener()
+  }
+
+  const newProjectListener = function() {
     let newButton = document.getElementById("newProjectButton")
     newButton.addEventListener("click", function() {
       dom.showProjectModal()
       closeModalListener()
     })
+  }
+
+  const editProjectListener = function() {
     let editButton = document.getElementById("editProjectButton")
     editButton.addEventListener("click", function() {
       //TODO
       return
     })
+  }
+
+  const deleteProjectListener = function() {
     let deleteButton = document.getElementById("deleteProjectButton")
     deleteButton.addEventListener("click", function() {
       //TODO
@@ -44,17 +62,23 @@ const input = (function(){
     })
   }
 
-  const taskControlListeners = function(){
+  const newTaskListener = function() {
     let newButton = document.getElementById("newTaskButton")
     newButton.addEventListener("click", function() {
       dom.showTaskModal(user.projArray)
       closeModalListener()
     })
+  }
+
+  const editTaskListener = function() {
     let editButton = document.getElementById("editTaskButton")
     editButton.addEventListener("click", function() {
       //TODO
       return
     })
+  }
+
+  const deleteTaskListener = function() {
     let deleteButton = document.getElementById("deleteTaskButton")
     deleteButton.addEventListener("click", function() {
       //TODO
