@@ -224,7 +224,7 @@ const dom = (() => {
   const createModalTaskEntry = () => {
     let taskEntryDiv = document.createElement("div")
     taskEntryDiv.id = "taskEntryDiv"
-    //taskEntryDiv.style.display = "none"
+    taskEntryDiv.style.display = "none"
 
     let textBox = document.createElement("input")
     textBox.setAttribute("type", "text")

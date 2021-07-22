@@ -29,8 +29,7 @@ const input = (function(){
   const projectControlListeners = function(){
     let newButton = document.getElementById("newProjectButton")
     newButton.addEventListener("click", function() {
-      //TODO
-      return
+      dom.showProjectModal()
     })
     let editButton = document.getElementById("editProjectButton")
     editButton.addEventListener("click", function() {
@@ -47,8 +46,7 @@ const input = (function(){
   const taskControlListeners = function(){
     let newButton = document.getElementById("newTaskButton")
     newButton.addEventListener("click", function() {
-      //TODO
-      return
+      dom.showTaskModal(user.projArray)
     })
     let editButton = document.getElementById("editTaskButton")
     editButton.addEventListener("click", function() {
@@ -77,3 +75,5 @@ dom.pageInit();
 dom.printProjectList(user.projArray)
 
 input.projectDisplayListeners()
+input.projectControlListeners()
+input.taskControlListeners()
