@@ -282,6 +282,13 @@ const dom = (() => {
     modalContainer.style.display = "block"
     let projectEntryDiv = document.getElementById("projectEntryDiv")
     projectEntryDiv.style.display = "block"
+
+    let cancelButton = document.getElementById("cancelButton")
+    window.onclick = function(event) {
+      if (event.target == modalContainer || event.target == cancelButton) {
+        clearTaskModal()
+      }
+    }
   }
   
   const clearProjectModal = () => {
@@ -306,6 +313,13 @@ const dom = (() => {
       option.innerHTML = `${proj.title}`
       projectSelect.appendChild(option)
     })
+
+    let cancelButton = document.getElementById("cancelButton")
+    window.onclick = function(event) {
+      if (event.target == modalContainer || event.target == cancelButton) {
+        clearTaskModal()
+      }
+    }
   }
   
   const clearTaskModal = () => {
