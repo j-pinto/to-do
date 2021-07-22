@@ -30,13 +30,7 @@ const input = (function(){
     let newButton = document.getElementById("newProjectButton")
     newButton.addEventListener("click", function() {
       dom.showProjectModal()
-
-      let cancelButton = document.getElementById("cancelButton")
-      window.onclick = function(event) {
-        if (event.target == modalContainer || event.target == cancelButton) {
-          dom.clearModal()
-        }
-      }
+      closeModalListener()
     })
     let editButton = document.getElementById("editProjectButton")
     editButton.addEventListener("click", function() {
@@ -54,13 +48,7 @@ const input = (function(){
     let newButton = document.getElementById("newTaskButton")
     newButton.addEventListener("click", function() {
       dom.showTaskModal(user.projArray)
-
-      let cancelButton = document.getElementById("cancelButton")
-      window.onclick = function(event) {
-        if (event.target == modalContainer || event.target == cancelButton) {
-          dom.clearModal()
-        }
-      }
+      closeModalListener()
     })
     let editButton = document.getElementById("editTaskButton")
     editButton.addEventListener("click", function() {
@@ -72,6 +60,15 @@ const input = (function(){
       //TODO
       return
     })
+  }
+
+  const closeModalListener = function() {
+    let cancelButton = document.getElementById("cancelButton")
+    window.onclick = function(event) {
+      if (event.target == modalContainer || event.target == cancelButton) {
+        dom.clearModal()
+      }
+    }
   }
 
   return {
