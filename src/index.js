@@ -38,11 +38,24 @@ const input = (function(){
     deleteTaskListener()
   }
 
+  const submitNewProjListener = function() {
+    let submitButton = document.getElementById("acceptButton")
+    submitButton.addEventListener("click", function() {
+      console.log("submit button clicked")
+      let name = document.getElementById("projectNameInput").value
+      user.createProject(name)
+      dom.clearModal()
+      dom.printProjectList(user.projArray)
+      input.projectDisplayListeners()
+    })
+  }
+
   const newProjectListener = function() {
     let newButton = document.getElementById("newProjectButton")
     newButton.addEventListener("click", function() {
       dom.showProjectModal()
       closeModalListener()
+      submitNewProjListener()
     })
   }
 
@@ -67,6 +80,7 @@ const input = (function(){
     newButton.addEventListener("click", function() {
       dom.showTaskModal(user.projArray)
       closeModalListener()
+      //TODO sumbit task listener
     })
   }
 
