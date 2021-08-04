@@ -75,15 +75,21 @@ const dom = (() => {
     printList(projectArray)
   }
 
-  const printTaskList = (taskArray) => {
+  const printTaskList = (project) => {
     let headingTitle = document.getElementById("headingTitle")
-    headingTitle.innerHTML = `${taskArray[0].project}`
+    headingTitle.innerHTML = `${project.title}`
     
+    let taskArray = project.tasks
     clearList("taskList")
     printList(taskArray)
   }
 
   const printList = (arr) => {
+    if (arr.length == 0) {
+      printEmptyList()
+      return
+    }
+
     let isTask;
     let listIDString;
     if ('dueDate' in arr[0]) {
@@ -138,6 +144,16 @@ const dom = (() => {
     deleteButton.className = "deleteTaskButton"
     deleteButton.innerHTML = "Delete"
     buttonDiv.appendChild(deleteButton)
+  }
+
+  const printEmptyList = () => {
+    let list = document.getElementById("taskList")
+    let listItem = document.createElement("div")
+    listItem.innerHTML = "This project contains no tasks"
+
+    listItem.className = "taskListItem"
+    listItem.style.border = "none"
+    list.appendChild(listItem)
   }
 
   const clearList = (listIDString) => {

@@ -19,7 +19,7 @@ const input = (function(){
       item.title == event.target.innerHTML
       )
   
-    dom.printTaskList(selectedProject.tasks)
+    dom.printTaskList(selectedProject)
   }
   
   const displayUpcoming = function(){
