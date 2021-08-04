@@ -17,7 +17,7 @@ const input = (function(){
   const displaySelectedPoject = function(event){
     let selectedProject = user.projArray.find( item => 
       item.title == event.target.innerHTML
-      )
+    )
   
     dom.printTaskList(selectedProject)
   }
@@ -36,18 +36,6 @@ const input = (function(){
     newTaskListener()
     editTaskListener()
     deleteTaskListener()
-  }
-
-  const submitNewProjListener = function() {
-    let submitButton = document.getElementById("acceptButton")
-    submitButton.addEventListener("click", function() {
-      console.log("submit button clicked")
-      let name = document.getElementById("projectNameInput").value
-      user.createProject(name)
-      dom.clearModal()
-      dom.printProjectList(user.projArray)
-      input.projectDisplayListeners()
-    })
   }
 
   const newProjectListener = function() {
@@ -98,6 +86,30 @@ const input = (function(){
       //TODO
       return
     })
+  }
+
+  const submitNewProjListener = function() {
+    let submitButton = document.getElementById("acceptButton")
+    submitButton.addEventListener("click", function() {
+      let name = document.getElementById("projectNameInput").value
+      user.createProject(name)
+      dom.clearModal()
+      dom.printProjectList(user.projArray)
+      input.projectDisplayListeners()
+    })
+  }
+
+  const getCurrentProject = function() {
+    let headingTitle = document.getElementById("headingTitle")
+    let currentProj = user.projArray.find( item => 
+      item.title == headingTitle.innerHTML
+    )
+    
+    if (currentProj == undefined) {
+      currentProj = user.projArray[0]
+    }
+
+    return currentProj
   }
 
   const closeModalListener = function() {
