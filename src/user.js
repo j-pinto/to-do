@@ -77,7 +77,7 @@ function User() {
     let project = this.projArray.find(item => item.title == proj)
     project.linkTasks(this.taskArray)
     project.sortTasksByDate()
-
+    this.generateUpcomingTasks()
     storage.save(this)
   }
 
@@ -91,6 +91,8 @@ function User() {
   }
 
   this.generateUpcomingTasks = function() {
+    this.upcomingTasks = { past: [], day: [], week: [] }
+    
     this.taskArray.forEach(task => {
       let dueDate = parse(task.dueDate, 'yyyy/MM/dd', new Date())
       let diff = differenceInCalendarDays(dueDate, new Date())
