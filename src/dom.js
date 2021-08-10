@@ -294,7 +294,10 @@ const dom = (() => {
     buttonDiv.appendChild(cancelButton)
   }
 
-  const showProjectModal = () => {
+  const showProjectModal = (currentProj='') => {
+    if (currentProj != '') {
+      document.getElementById("projectNameInput").value = currentProj
+    }
     let modalContainer = document.getElementById("modalContainer")
     modalContainer.style.display = "block"
     let projectEntryDiv = document.getElementById("projectEntryDiv")
