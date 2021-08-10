@@ -68,7 +68,7 @@ const input = (function(){
     newButton.addEventListener("click", function() {
       dom.showTaskModal(user.projArray)
       closeModalListener()
-      //TODO sumbit task listener
+      submitNewTaskListener()
     })
   }
 
@@ -96,6 +96,21 @@ const input = (function(){
       dom.clearModal()
       dom.printProjectList(user.projArray)
       input.projectDisplayListeners()
+    })
+  }
+
+  const submitNewTaskListener = function() {
+    let submitButton = document.getElementById("acceptButton")
+    submitButton.addEventListener("click", function() {
+      let name = document.getElementById("taskNameInput").value
+      console.log(name)
+      let projectName = document.getElementById("projectSelect").value
+      console.log(projectName)
+      let date = new Date( document.getElementById("dateInput").value )
+      console.log(date)
+      user.createTask(name, projectName, date)
+      dom.clearModal()
+      //TODO reprint tasks
     })
   }
 
