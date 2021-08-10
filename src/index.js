@@ -2,6 +2,8 @@ import "./style.css";
 import { dom } from "./dom.js";
 import { User } from "./user.js";
 
+dom.pageInit();
+
 const input = (function(){
 
   const projectDisplayListeners = function(){
@@ -55,8 +57,10 @@ const input = (function(){
   const editProjectListener = function() {
     let editButton = document.getElementById("editProjectButton")
     editButton.addEventListener("click", function() {
-      //TODO
-      return
+      let currentProj = getCurrentProject()
+      dom.showProjectModal(currentProj.title)
+      closeModalListener()
+      submitEditProjListener()
     })
   }
 
@@ -104,6 +108,10 @@ const input = (function(){
     })
   }
 
+  const submitEditProjListener = function() {
+    //TODO
+  }
+
   const submitNewTaskListener = function() {
     let submitButton = document.getElementById("acceptButton")
     submitButton.addEventListener("click", function() {
@@ -149,7 +157,6 @@ const user = new User();
 user.attemptLoad();
 user.generateUpcomingTasks()
 
-dom.pageInit();
 dom.printProjectList(user.projArray)
 
 input.projectDisplayListeners()
