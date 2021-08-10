@@ -103,11 +103,8 @@ const input = (function(){
     let submitButton = document.getElementById("acceptButton")
     submitButton.addEventListener("click", function() {
       let name = document.getElementById("taskNameInput").value
-      console.log(name)
       let projectName = document.getElementById("projectSelect").value
-      console.log(projectName)
       let date = new Date( document.getElementById("dateInput").value )
-      console.log(date)
       user.createTask(name, projectName, date)
       dom.clearModal()
       //TODO reprint tasks
