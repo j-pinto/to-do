@@ -21,6 +21,11 @@ const input = (function(){
   
     dom.printTaskList(selectedProject)
   }
+
+  const refreshProjectDisplay = function(projectName) {
+    let selectedProject = user.projArray.find( item => item.title == projectName)
+    dom.printTaskList(selectedProject)
+  }
   
   const displayUpcoming = function(){
     dom.printUpcomingTasks(user.upcomingTasks)
@@ -107,7 +112,7 @@ const input = (function(){
       let date = new Date( document.getElementById("dateInput").value )
       user.createTask(name, projectName, date)
       dom.clearModal()
-      //TODO reprint tasks
+      refreshProjectDisplay(projectName)
     })
   }
 
