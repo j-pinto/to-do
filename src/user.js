@@ -113,9 +113,12 @@ function User() {
       ( item.title == oldName && task.project == proj )
     })
 
+    let project = this.projArray.find(item => item.title == proj)
+
     task.title = newName
     task.dueDate = newDate
-    this.sortTasksByDate()
+    project.linkTasks()
+    project.sortTasksByDate()
     this.generateUpcomingTasks()
   }
 
