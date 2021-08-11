@@ -52,6 +52,24 @@ function User() {
     storage.save(this)
   }
 
+  this.editProject = function(oldName, newName) {
+    //change project name
+    let project = this.projArray.find(item => item.title == oldName)
+    project.title = newName
+    this.sortProjectsByName()
+    console.log(`proj sort: ${this.projArray}`)
+
+    //change associated tasks
+    this.taskArray.forEach(task => {
+      if (task.project == oldName) { task.project = newName }
+    })
+    project.linkTasks(this.taskArray)
+    project.sortTasksByDate()
+    console.log(`task sort: ${this.taskArray}`)
+    this.generateUpcomingTasks()
+    storage.save(this)
+  }
+
   this.restoreProjects = function(parsedProjects) {
     parsedProjects.forEach(proj => {
       let restoredProj = new Project(proj.title)
@@ -92,7 +110,7 @@ function User() {
 
   this.generateUpcomingTasks = function() {
     this.upcomingTasks = { past: [], day: [], week: [] }
-    
+
     this.taskArray.forEach(task => {
       let dueDate = parse(task.dueDate, 'yyyy/MM/dd', new Date())
       let diff = differenceInCalendarDays(dueDate, new Date())
