@@ -1,7 +1,7 @@
 import "./style.css";
 import { dom } from "./dom.js";
 import { User } from "./user.js";
-import { format, parse } from 'date-fns';
+import { format, add } from 'date-fns';
 
 localStorage.clear()
 const user = new User();
@@ -153,7 +153,7 @@ const input = (() => {
     let projName = currentProj.title
     console.log(currentProj.title)
     let date = new Date( document.getElementById("dateInput").value )
-    let formattedDate = format(date, 'yyyy/MM/dd')
+    let formattedDate = formatDate(date)
 
     user.editTask(oldName, newName, formattedDate, projName)
     dom.clearModal()
@@ -187,6 +187,12 @@ const input = (() => {
         dom.clearModal()
       }
     }
+  }
+
+  const formatDate = function(dateObject) {
+    let compensatedDate = add(dateObject, {days: 1})
+    let formattedDate = format(compensatedDate,'yyyy/MM/dd')
+    return formattedDate
   }
 
   return {
