@@ -6,6 +6,8 @@ dom.pageInit();
 
 const input = (function(){
 
+  const submitButton = document.getElementById("acceptButton")
+
   const projectDisplayListeners = function(){
     let projects = document.getElementsByClassName("projectListItem")
     for (let i=0; i < projects.length; i++) {
@@ -50,7 +52,7 @@ const input = (function(){
     newButton.addEventListener("click", function() {
       dom.showProjectModal()
       closeModalListener()
-      submitListener(submitNewProj)
+      submitButton.onclick = submitNewProj
     })
   }
 
@@ -77,7 +79,7 @@ const input = (function(){
     newButton.addEventListener("click", function() {
       dom.showTaskModal(user.projArray)
       closeModalListener()
-      submitListener(submitNewTask)
+      submitButton.onclick = submitNewTask
     })
   }
 
@@ -95,11 +97,6 @@ const input = (function(){
       //TODO
       return
     })
-  }
-
-  const submitListener = function(callback) {
-    let submitButton = document.getElementById("acceptButton")
-    submitButton.addEventListener("click", callback)
   }
 
   const submitNewProj = function() {
