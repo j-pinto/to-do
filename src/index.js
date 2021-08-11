@@ -21,8 +21,8 @@ const input = (() => {
     deleteProjectListener()
 
     newTaskListener()
-    editTaskListener()
-    deleteTaskListener()
+    editTaskListeners()
+    deleteTaskListeners()
   }
 
   const displayListeners = function() {
@@ -88,15 +88,18 @@ const input = (() => {
     })
   }
 
-  const editTaskListener = function() {
-    let editButton = document.getElementById("editTaskButton")
-    editButton.addEventListener("click", function() {
-      //TODO
-      return
-    })
+  const editTaskListeners = function() {
+    let taskList = document.getElementsByClassName("taskListItem")
+    for (let i = 0; i < taskList.length; i++) {
+      let task = taskList[i]
+      task.addEventListener("click", function(event) {
+        //TODO
+        return
+      })
+    }
   }
 
-  const deleteTaskListener = function() {
+  const deleteTaskListeners = function() {
     let deleteButton = document.getElementById("deleteTaskButton")
     deleteButton.addEventListener("click", function() {
       //TODO
@@ -110,6 +113,7 @@ const input = (() => {
     dom.clearModal()
     dom.printProjectList(user.projArray)
     displayListeners()
+    editTaskListeners()
   }
 
   const submitEditProj = function() {
@@ -120,6 +124,7 @@ const input = (() => {
     dom.clearModal()
     dom.printProjectList(user.projArray)
     displayListeners()
+    editTaskListeners()
     displayRefresh(newName)
   }
 
@@ -130,6 +135,7 @@ const input = (() => {
     user.createTask(name, projectName, date)
     dom.clearModal()
     displayRefresh(projectName)
+    editTaskListeners()
   }
 
   const getCurrentProject = function() {
@@ -143,6 +149,10 @@ const input = (() => {
     }
 
     return currentProj
+  }
+
+  const getCurrentTask = function() {
+    //TODO
   }
 
   const closeModalListener = function() {
