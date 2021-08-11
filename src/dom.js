@@ -265,6 +265,7 @@ const dom = (() => {
 
     let projectSelectLabel = document.createElement("label")
     projectSelectLabel.setAttribute("for", "projectSelect")
+    projectSelectLabel.id = "projectSelectLabel"
     projectSelectLabel.innerHTML = "Assign to Project:"
     taskEntryDiv.appendChild(projectSelectLabel)
 
@@ -306,19 +307,31 @@ const dom = (() => {
     projectEntryDiv.style.display = "block"
   }
 
-  const showTaskModal = (projectArray) => {
+  const showTaskModal = (projectArray=[], taskObject=null) => {
     let modalContainer = document.getElementById("modalContainer")
     modalContainer.style.display = "block"
     let taskEntryDiv = document.getElementById("taskEntryDiv")
     taskEntryDiv.style.display = "block"
 
+    let taskNameInput = document.getElementById("taskNameInput")
+    let dateInput = document.getElementById("dateInput")
+    let projectSelectLabel = document.getElementById("projectSelectLabel")
     let projectSelect = document.getElementById("projectSelect")
-    projectArray.forEach(proj => {
+
+    if (taskObject != null) {
+      let dueDate = format(new Date(taskObject.dueDate), 'yyyy-MM-dd')
+      dateInput.value = dueDate
+      taskNameInput.value = `${taskObject.title}`
+      projectSelectLabel.style.display = "none"
+      projectSelect.style.display = "none"
+    } else if (projectArray != []) {
+      projectArray.forEach(proj => {
       let option = document.createElement("option")
       option.value = proj.title
       option.innerHTML = `${proj.title}`
       projectSelect.appendChild(option)
-    })
+      })
+    }
   }
   
   const clearModal = () => {
