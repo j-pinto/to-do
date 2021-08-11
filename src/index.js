@@ -77,7 +77,7 @@ const input = (function(){
     newButton.addEventListener("click", function() {
       dom.showTaskModal(user.projArray)
       closeModalListener()
-      submitNewTaskListener()
+      submitListener(submitNewTask)
     })
   }
 
@@ -114,16 +114,13 @@ const input = (function(){
     //TODO
   }
 
-  const submitNewTaskListener = function() {
-    let submitButton = document.getElementById("acceptButton")
-    submitButton.addEventListener("click", function() {
-      let name = document.getElementById("taskNameInput").value
-      let projectName = document.getElementById("projectSelect").value
-      let date = new Date( document.getElementById("dateInput").value )
-      user.createTask(name, projectName, date)
-      dom.clearModal()
-      refreshProjectDisplay(projectName)
-    })
+  const submitNewTask = function() {
+    let name = document.getElementById("taskNameInput").value
+    let projectName = document.getElementById("projectSelect").value
+    let date = new Date( document.getElementById("dateInput").value )
+    user.createTask(name, projectName, date)
+    dom.clearModal()
+    refreshProjectDisplay(projectName)
   }
 
   const getCurrentProject = function() {
