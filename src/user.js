@@ -37,7 +37,6 @@ function User() {
   this.deleteProject = function(projectObj) {
     let project = projectObj
   
-    //erase tasks associated with project
     this.taskArray.forEach((task) => {
       if (task.project == project.title) {
         let index = this.taskArray.indexOf(task)
@@ -45,7 +44,6 @@ function User() {
       }
     })
   
-    //remove project from project array
     let index = this.projArray.indexOf(project)
     this.projArray.splice(index, 1)
   
@@ -53,19 +51,15 @@ function User() {
   }
 
   this.editProject = function(oldName, newName) {
-    //change project name
     let project = this.projArray.find(item => item.title == oldName)
     project.title = newName
     this.sortProjectsByName()
-    console.log(`proj sort: ${this.projArray}`)
 
-    //change associated tasks
     this.taskArray.forEach(task => {
       if (task.project == oldName) { task.project = newName }
     })
     project.linkTasks(this.taskArray)
     project.sortTasksByDate()
-    console.log(`task sort: ${this.taskArray}`)
     this.generateUpcomingTasks()
     storage.save(this)
   }

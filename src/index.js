@@ -146,12 +146,9 @@ const input = (() => {
 
   const submitEditTask = function() {
     let oldName = arguments[0].title
-    console.log(oldName)
     let newName = document.getElementById("taskNameInput").value
-    console.log(newName)
     let currentProj = getCurrentProject()
     let projName = currentProj.title
-    console.log(currentProj.title)
     let date = new Date( document.getElementById("dateInput").value )
     let formattedDate = formatDate(date)
 
