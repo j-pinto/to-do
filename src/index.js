@@ -62,7 +62,7 @@ const input = (function(){
       let currentProj = getCurrentProject()
       dom.showProjectModal(currentProj.title)
       closeModalListener()
-      submitEditProjListener()
+      submitButton.onclick = submitEditProj
     })
   }
 
@@ -107,8 +107,15 @@ const input = (function(){
     projectDisplayListeners()
   }
 
-  const submitEditProjListener = function() {
-    //TODO
+  const submitEditProj = function() {
+    let currentProj = getCurrentProject()
+    let oldName = currentProj.title
+    let newName = document.getElementById("projectNameInput").value
+    user.editProject(oldName, newName)
+    dom.clearModal()
+    dom.printProjectList(user.projArray)
+    projectDisplayListeners()
+    refreshProjectDisplay(newName)
   }
 
   const submitNewTask = function() {
