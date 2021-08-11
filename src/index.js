@@ -14,6 +14,18 @@ const input = (() => {
 
   const submitButton = document.getElementById("acceptButton")
 
+  const init = function() {
+    displayListeners()
+
+    newProjectListener()
+    editProjectListener()
+    deleteProjectListener()
+
+    newTaskListener()
+    editTaskListener()
+    deleteTaskListener()
+  }
+
   const displayListeners = function() {
     let projects = document.getElementsByClassName("projectListItem")
     for (let i=0; i < projects.length; i++) {
@@ -39,16 +51,6 @@ const input = (() => {
   const displayRefresh = function(projectName) {
     let selectedProject = user.projArray.find( item => item.title == projectName)
     dom.printTaskList(selectedProject)
-  }
-
-  const controlListeners = function() {
-    newProjectListener()
-    editProjectListener()
-    deleteProjectListener()
-
-    newTaskListener()
-    editTaskListener()
-    deleteTaskListener()
   }
 
   const newProjectListener = function() {
@@ -154,11 +156,9 @@ const input = (() => {
   }
 
   return {
-    displayListeners,
-    controlListeners
+    init
   }
 
 })();
 
-input.displayListeners()
-input.controlListeners()
+input.init()
