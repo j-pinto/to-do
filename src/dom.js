@@ -199,11 +199,13 @@ const dom = (() => {
     }
   }
 
-  const pageInit = () => {
+  const pageInit = (userObject) => {
     createTopbar();
     createSidebar();
     createMainDiv();
     createModal();
+
+    printProjectList(userObject.projArray)
   }
   
   const createModal = () => {

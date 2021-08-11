@@ -7,8 +7,7 @@ const user = new User();
 user.attemptLoad();
 user.generateUpcomingTasks()
 
-dom.pageInit();
-dom.printProjectList(user.projArray)
+dom.pageInit(user);
 
 const input = (() => {
 
