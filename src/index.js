@@ -94,8 +94,8 @@ const input = (() => {
       let task = taskList[i]
       task.addEventListener("click", function(event) {
         if (event.target.className == 'editTaskButton') {
-          let currentTask = getCurrentTask()
-          dom.showTaskModal(currentTask.title)
+          let currentTask = getCurrentTask(this)
+          dom.showTaskModal([], currentTask)
           closeModalListener()
           submitButton.onclick = submitEditTask
         }
@@ -159,8 +159,10 @@ const input = (() => {
     return currentProj
   }
 
-  const getCurrentTask = function() {
-    //TODO
+  const getCurrentTask = function(el) {
+    let taskName = el.getElementsByClassName("taskListItemText")[0].innerHTML
+    let task = user.taskArray.find(item => item.title == taskName)
+    return task
   }
 
   const closeModalListener = function() {
