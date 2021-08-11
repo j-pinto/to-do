@@ -109,17 +109,18 @@ function User() {
   }
 
   this.editTask = function(oldName, newName, newDate, proj) {
-    let task = this.taskArray.find(item => {
-      ( item.title == oldName && task.project == proj )
-    })
+    let task = this.taskArray.find(item => 
+      ( item.title == oldName && item.project == proj )
+    )
 
     let project = this.projArray.find(item => item.title == proj)
 
     task.title = newName
     task.dueDate = newDate
-    project.linkTasks()
+    project.linkTasks(this.taskArray)
     project.sortTasksByDate()
     this.generateUpcomingTasks()
+    storage.save(this)
   }
 
   this.generateUpcomingTasks = function() {
