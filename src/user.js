@@ -61,6 +61,7 @@ function User() {
     project.linkTasks(this.taskArray)
     project.sortTasksByDate()
     this.generateUpcomingTasks()
+
     storage.save(this)
   }
 
@@ -100,6 +101,8 @@ function User() {
 
     let index = this.taskArray.indexOf(task)
     this.taskArray.splice(index, 1)
+
+    storage.save(this)
   }
 
   this.editTask = function(oldName, newName, newDate, proj) {
@@ -114,6 +117,7 @@ function User() {
     project.linkTasks(this.taskArray)
     project.sortTasksByDate()
     this.generateUpcomingTasks()
+
     storage.save(this)
   }
 
@@ -135,6 +139,8 @@ function User() {
     });
 
     this.sortUpcomingByDate()
+
+    storage.save(this)
   }
 
   this.sortUpcomingByDate = function() {
