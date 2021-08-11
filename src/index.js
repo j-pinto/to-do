@@ -50,7 +50,7 @@ const input = (function(){
     newButton.addEventListener("click", function() {
       dom.showProjectModal()
       closeModalListener()
-      submitNewProjListener()
+      submitListener(submitNewProj)
     })
   }
 
@@ -97,15 +97,17 @@ const input = (function(){
     })
   }
 
-  const submitNewProjListener = function() {
+  const submitListener = function(callback) {
     let submitButton = document.getElementById("acceptButton")
-    submitButton.addEventListener("click", function() {
-      let name = document.getElementById("projectNameInput").value
-      user.createProject(name)
-      dom.clearModal()
-      dom.printProjectList(user.projArray)
-      input.projectDisplayListeners()
-    })
+    submitButton.addEventListener("click", callback)
+  }
+
+  const submitNewProj = function() {
+    let name = document.getElementById("projectNameInput").value
+    user.createProject(name)
+    dom.clearModal()
+    dom.printProjectList(user.projArray)
+    projectDisplayListeners()
   }
 
   const submitEditProjListener = function() {
@@ -153,6 +155,7 @@ const input = (function(){
   }
 })();
 
+localStorage.clear()
 const user = new User();
 user.attemptLoad();
 user.generateUpcomingTasks()
