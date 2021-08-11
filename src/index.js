@@ -2,23 +2,29 @@ import "./style.css";
 import { dom } from "./dom.js";
 import { User } from "./user.js";
 
-dom.pageInit();
+localStorage.clear()
+const user = new User();
+user.attemptLoad();
+user.generateUpcomingTasks()
 
-const input = (function(){
+dom.pageInit();
+dom.printProjectList(user.projArray)
+
+const input = (() => {
 
   const submitButton = document.getElementById("acceptButton")
 
-  const projectDisplayListeners = function(){
+  const displayListeners = function() {
     let projects = document.getElementsByClassName("projectListItem")
     for (let i=0; i < projects.length; i++) {
       projects[i].addEventListener('click', displaySelectedPoject)
-    };
+    }
   
     let upcoming = document.getElementById("upcoming")
     upcoming.addEventListener('click', displayUpcoming)
   }
   
-  const displaySelectedPoject = function(event){
+  const displaySelectedPoject = function(event) {
     let selectedProject = user.projArray.find( item => 
       item.title == event.target.innerHTML
     )
@@ -26,22 +32,20 @@ const input = (function(){
     dom.printTaskList(selectedProject)
   }
 
-  const refreshProjectDisplay = function(projectName) {
-    let selectedProject = user.projArray.find( item => item.title == projectName)
-    dom.printTaskList(selectedProject)
-  }
-  
-  const displayUpcoming = function(){
+  const displayUpcoming = function() {
     dom.printUpcomingTasks(user.upcomingTasks)
   }
 
-  const projectControlListeners = function() {
+  const displayRefresh = function(projectName) {
+    let selectedProject = user.projArray.find( item => item.title == projectName)
+    dom.printTaskList(selectedProject)
+  }
+
+  const controlListeners = function() {
     newProjectListener()
     editProjectListener()
     deleteProjectListener()
-  }
 
-  const taskControlListeners = function() {
     newTaskListener()
     editTaskListener()
     deleteTaskListener()
@@ -104,7 +108,7 @@ const input = (function(){
     user.createProject(name)
     dom.clearModal()
     dom.printProjectList(user.projArray)
-    projectDisplayListeners()
+    displayListeners()
   }
 
   const submitEditProj = function() {
@@ -114,8 +118,8 @@ const input = (function(){
     user.editProject(oldName, newName)
     dom.clearModal()
     dom.printProjectList(user.projArray)
-    projectDisplayListeners()
-    refreshProjectDisplay(newName)
+    displayListeners()
+    displayRefresh(newName)
   }
 
   const submitNewTask = function() {
@@ -124,7 +128,7 @@ const input = (function(){
     let date = new Date( document.getElementById("dateInput").value )
     user.createTask(name, projectName, date)
     dom.clearModal()
-    refreshProjectDisplay(projectName)
+    displayRefresh(projectName)
   }
 
   const getCurrentProject = function() {
@@ -150,19 +154,11 @@ const input = (function(){
   }
 
   return {
-    projectDisplayListeners,
-    projectControlListeners,
-    taskControlListeners
+    displayListeners,
+    controlListeners
   }
+
 })();
 
-localStorage.clear()
-const user = new User();
-user.attemptLoad();
-user.generateUpcomingTasks()
-
-dom.printProjectList(user.projArray)
-
-input.projectDisplayListeners()
-input.projectControlListeners()
-input.taskControlListeners()
+input.displayListeners()
+input.controlListeners()
