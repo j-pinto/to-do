@@ -1,6 +1,7 @@
 import "./style.css";
 import { dom } from "./dom.js";
 import { User } from "./user.js";
+import { format, parse } from 'date-fns';
 
 localStorage.clear()
 const user = new User();
@@ -95,9 +96,10 @@ const input = (() => {
       task.addEventListener("click", function(event) {
         if (event.target.className == 'editTaskButton') {
           let currentTask = getCurrentTask(this)
+          const boundSubmitEditTask = submitEditTask.bind(null, currentTask)
           dom.showTaskModal([], currentTask)
           closeModalListener()
-          submitButton.onclick = submitEditTask
+          submitButton.onclick = boundSubmitEditTask
         }
       })
     }
@@ -143,7 +145,20 @@ const input = (() => {
   }
 
   const submitEditTask = function() {
-    //TODO
+    let oldName = arguments[0].title
+    console.log(oldName)
+    let newName = document.getElementById("taskNameInput").value
+    console.log(newName)
+    let currentProj = getCurrentProject()
+    let projName = currentProj.title
+    console.log(currentProj.title)
+    let date = new Date( document.getElementById("dateInput").value )
+    let formattedDate = format(date, 'yyyy/MM/dd')
+
+    user.editTask(oldName, newName, formattedDate, projName)
+    dom.clearModal()
+    displayRefresh(projName)
+    editTaskListeners()
   }
 
   const getCurrentProject = function() {
