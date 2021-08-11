@@ -93,8 +93,12 @@ const input = (() => {
     for (let i = 0; i < taskList.length; i++) {
       let task = taskList[i]
       task.addEventListener("click", function(event) {
-        //TODO
-        return
+        if (event.target.className == 'editTaskButton') {
+          let currentTask = getCurrentTask()
+          dom.showTaskModal(currentTask.title)
+          closeModalListener()
+          submitButton.onclick = submitEditTask
+        }
       })
     }
   }
@@ -136,6 +140,10 @@ const input = (() => {
     dom.clearModal()
     displayRefresh(projectName)
     editTaskListeners()
+  }
+
+  const submitEditTask = function() {
+    //TODO
   }
 
   const getCurrentProject = function() {
