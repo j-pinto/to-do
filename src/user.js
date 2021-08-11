@@ -108,6 +108,17 @@ function User() {
     this.taskArray.splice(index, 1)
   }
 
+  this.editTask = function(oldName, newName, newDate, proj) {
+    let task = this.taskArray.find(item => {
+      ( item.title == oldName && task.project == proj )
+    })
+
+    task.title = newName
+    task.dueDate = newDate
+    this.sortTasksByDate()
+    this.generateUpcomingTasks()
+  }
+
   this.generateUpcomingTasks = function() {
     this.upcomingTasks = { past: [], day: [], week: [] }
 
