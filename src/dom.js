@@ -78,6 +78,11 @@ const dom = (() => {
   const printTaskList = (project) => {
     let headingTitle = document.getElementById("headingTitle")
     headingTitle.innerHTML = `${project.title}`
+
+    let editButton = document.getElementById("editProjectButton")
+    let deleteButton = document.getElementById("deleteProjectButton")
+    editButton.style.display = "inline-block"
+    deleteButton.style.display = "inline-block"
     
     let taskArray = project.tasks
     clearList("taskList")
@@ -174,6 +179,11 @@ const dom = (() => {
   const printUpcomingTasks = (upcomingTasks) => {
     let headingTitle = document.getElementById("headingTitle")
     headingTitle.innerHTML = "Upcoming Tasks"
+
+    let editButton = document.getElementById("editProjectButton")
+    let deleteButton = document.getElementById("deleteProjectButton")
+    editButton.style.display = "none"
+    deleteButton.style.display = "none"
 
     clearList("taskList")
 
