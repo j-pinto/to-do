@@ -207,6 +207,16 @@ const dom = (() => {
       makeSubheading("Next 7 days:")
       printList(upcomingTasks.week)
     }
+
+    let editButtons = document.getElementsByClassName("editTaskButton")
+    for (let i = 0; i < editButtons.length; i++) {
+      editButtons[i].style.display = "none"
+    }
+
+    let delButtons = document.getElementsByClassName("deleteTaskButton")
+    for (let i = 0; i < delButtons.length; i++) {
+      delButtons[i].style.display = "none"
+    }
   }
 
   const pageInit = (userObject) => {
