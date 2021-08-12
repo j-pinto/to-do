@@ -352,6 +352,15 @@ const dom = (() => {
       })
     }
   }
+
+  const showTaskDeleteModal = () => {
+    let modalContainer = document.getElementById("modalContainer")
+    modalContainer.style.display = "block"
+
+    let deleteDiv = document.getElementById("deleteDiv")
+    deleteDiv.style.display = "block"
+    deleteDiv.innerHTML = "Are you sure you want to delete this Task?"
+  }
   
   const clearModal = () => {
     let modalContainer = document.getElementById("modalContainer")
