@@ -216,6 +216,7 @@ const dom = (() => {
     createModal();
 
     printProjectList(userObject.projArray)
+    printUpcomingTasks(userObject.upcomingTasks)
   }
   
   const createModal = () => {
