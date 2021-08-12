@@ -222,6 +222,7 @@ const dom = (() => {
 
     createModalProjectEntry()
     createModalTaskEntry()
+    createModalDelete()
     createModalButtons()
   }
 
@@ -278,6 +279,15 @@ const dom = (() => {
     modalContent.appendChild(taskEntryDiv)
   }
 
+  const createModalDelete = () => {
+    let deleteDiv = document.createElement("div")
+    deleteDiv.id = "deleteDiv"
+    deleteDiv.style.display = "none"
+
+    let modalContent = document.getElementById("modalContent")
+    modalContent.appendChild(deleteDiv)
+  }
+
   const createModalButtons = () => {
     let buttonDiv = document.createElement("div")
     buttonDiv.id = "modalButtonDiv"
@@ -305,6 +315,15 @@ const dom = (() => {
     modalContainer.style.display = "block"
     let projectEntryDiv = document.getElementById("projectEntryDiv")
     projectEntryDiv.style.display = "block"
+  }
+
+  const showProjDeleteModal = () => {
+    let modalContainer = document.getElementById("modalContainer")
+    modalContainer.style.display = "block"
+
+    let deleteDiv = document.getElementById("deleteDiv")
+    deleteDiv.style.display = "block"
+    deleteDiv.innerHTML = "Are you sure you want to delete this project? All associated tasks will also be deleted."
   }
 
   const showTaskModal = (projectArray=[], taskObject=null) => {
@@ -341,6 +360,8 @@ const dom = (() => {
     projectEntryDiv.style.display = "none"
     let taskEntryDiv = document.getElementById("taskEntryDiv")
     taskEntryDiv.style.display = "none"
+    let deleteDiv = document.getElementById("deleteDiv")
+    deleteDiv.style.display = "none"
 
     document.getElementById("dateInput").value = ""
     document.getElementById("projectNameInput").value = ""
@@ -359,6 +380,7 @@ const dom = (() => {
     printUpcomingTasks,
     showProjectModal,
     showTaskModal,
+    showProjDeleteModal,
     clearModal
   }
   
