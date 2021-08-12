@@ -127,6 +127,8 @@ function User() {
     } else {
       taskObj.complete = true
     }
+
+    storage.save(this)
   }
 
   this.generateUpcomingTasks = function() {
