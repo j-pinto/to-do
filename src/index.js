@@ -107,11 +107,19 @@ const input = (() => {
   }
 
   const deleteTaskListeners = function() {
-    let deleteButton = document.getElementById("deleteTaskButton")
-    deleteButton.addEventListener("click", function() {
-      //TODO
-      return
-    })
+    let taskList = document.getElementsByClassName("taskListItem")
+    for (let i = 0; i < taskList.length; i++) {
+      let task = taskList[i]
+      task.addEventListener("click", function(event) {
+        if (event.target.className == 'deleteTaskButton') {
+          let currentTask = getCurrentTask(this)
+          const boundSubmitDeleteTask = submitDeleteTask.bind(null, currentTask)
+          dom.showTaskDeleteModal()
+          closeModalListener()
+          submitButton.onclick = boundSubmitDeleteTask
+        }
+      })
+    }
   }
 
   const submitNewProj = function() {
@@ -121,7 +129,6 @@ const input = (() => {
     dom.printProjectList(user.projArray)
     displayListeners()
     displayRefresh(name)
-    editTaskListeners()
   }
 
   const submitEditProj = function() {
@@ -132,8 +139,9 @@ const input = (() => {
     dom.clearModal()
     dom.printProjectList(user.projArray)
     displayListeners()
-    editTaskListeners()
     displayRefresh(newName)
+    editTaskListeners()
+    deleteTaskListeners()
   }
 
   const submitDeleteProj = function() {
@@ -144,6 +152,7 @@ const input = (() => {
     displayListeners()
     displayUpcoming()
     editTaskListeners()
+    deleteTaskListeners()
   }
 
   const submitNewTask = function() {
@@ -154,6 +163,7 @@ const input = (() => {
     dom.clearModal()
     displayRefresh(projectName)
     editTaskListeners()
+    deleteTaskListeners()
   }
 
   const submitEditTask = function() {
@@ -168,6 +178,17 @@ const input = (() => {
     dom.clearModal()
     displayRefresh(projName)
     editTaskListeners()
+    deleteTaskListeners()
+  }
+
+  const submitDeleteTask = function() {
+    let currentTask = arguments[0]
+    let currentProj = getCurrentProject()
+    user.deleteTask(currentTask)
+    dom.clearModal()
+    displayRefresh(currentProj.title)
+    editTaskListeners()
+    deleteTaskListeners()
   }
 
   const getCurrentProject = function() {
