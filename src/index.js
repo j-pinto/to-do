@@ -168,8 +168,7 @@ const input = (() => {
   const submitEditTask = function() {
     let oldName = arguments[0].title
     let newName = document.getElementById("taskNameInput").value
-    let currentProj = getCurrentProject()
-    let projName = currentProj.title
+    let projName = arguments[0].project
     let date = new Date( document.getElementById("dateInput").value )
     let formattedDate = formatDate(date)
 
@@ -182,10 +181,10 @@ const input = (() => {
 
   const submitDeleteTask = function() {
     let currentTask = arguments[0]
-    let currentProj = getCurrentProject()
+    let projName = arguments[0].project
     user.deleteTask(currentTask)
     dom.clearModal()
-    displayRefresh(currentProj.title)
+    displayRefresh(projName)
     editTaskListeners()
     deleteTaskListeners()
   }
@@ -201,8 +200,7 @@ const input = (() => {
 
   const getCurrentTask = function(el) {
     let taskName = el.getElementsByClassName("taskListItemText")[0].innerHTML
-    let currentProj = getCurrentProject()
-    let projName = currentProj.title
+    let projName = el.getAttribute("data-project")
 
     let task = user.taskArray.find(item => 
       (item.title == taskName && item.project == projName)
