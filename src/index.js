@@ -120,6 +120,7 @@ const input = (() => {
     dom.clearModal()
     dom.printProjectList(user.projArray)
     displayListeners()
+    displayRefresh(name)
     editTaskListeners()
   }
 
