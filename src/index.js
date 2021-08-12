@@ -13,7 +13,7 @@ const input = (() => {
 
   const submitButton = document.getElementById("acceptButton")
 
-  const init = function() {
+  const initListeners = function() {
     displayListeners()
 
     newProjectListener()
@@ -23,6 +23,7 @@ const input = (() => {
     newTaskListener()
     editTaskListeners()
     deleteTaskListeners()
+    checkboxListeners()
   }
 
   const displayListeners = function() {
@@ -41,20 +42,18 @@ const input = (() => {
     )
   
     dom.printTaskList(selectedProject)
-    editProjectListener()
-    deleteProjectListener()
-    newTaskListener()
-    editTaskListeners()
-    deleteTaskListeners()
+    initListeners()
   }
 
   const displayUpcoming = function() {
     dom.printUpcomingTasks(user.upcomingTasks)
+    initListeners()
   }
 
   const displayRefresh = function(projectName) {
     let selectedProject = user.projArray.find( item => item.title == projectName)
     dom.printTaskList(selectedProject)
+    initListeners()
   }
 
   const newProjectListener = function() {
@@ -145,7 +144,6 @@ const input = (() => {
     user.createProject(name)
     dom.clearModal()
     dom.printProjectList(user.projArray)
-    displayListeners()
     displayRefresh(name)
   }
 
@@ -156,10 +154,7 @@ const input = (() => {
     user.editProject(oldName, newName)
     dom.clearModal()
     dom.printProjectList(user.projArray)
-    displayListeners()
     displayRefresh(newName)
-    editTaskListeners()
-    deleteTaskListeners()
   }
 
   const submitDeleteProj = function() {
@@ -167,10 +162,7 @@ const input = (() => {
     user.deleteProject(currentProj)
     dom.clearModal()
     dom.printProjectList(user.projArray)
-    displayListeners()
-    displayUpcoming()
-    editTaskListeners()
-    deleteTaskListeners()
+    displayRefresh(user.projArray[0].title)
   }
 
   const submitNewTask = function() {
@@ -180,8 +172,6 @@ const input = (() => {
     user.createTask(name, projectName, date)
     dom.clearModal()
     displayRefresh(projectName)
-    editTaskListeners()
-    deleteTaskListeners()
   }
 
   const submitEditTask = function() {
@@ -194,8 +184,6 @@ const input = (() => {
     user.editTask(oldName, newName, formattedDate, projName)
     dom.clearModal()
     displayRefresh(projName)
-    editTaskListeners()
-    deleteTaskListeners()
   }
 
   const submitDeleteTask = function() {
@@ -204,8 +192,6 @@ const input = (() => {
     user.deleteTask(currentTask)
     dom.clearModal()
     displayRefresh(projName)
-    editTaskListeners()
-    deleteTaskListeners()
   }
 
   const getCurrentProject = function() {
@@ -243,9 +229,9 @@ const input = (() => {
   }
 
   return {
-    init
+    initListeners
   }
 
 })();
 
-input.init()
+input.initListeners()
