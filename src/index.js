@@ -75,8 +75,9 @@ const input = (() => {
   const deleteProjectListener = function() {
     let deleteButton = document.getElementById("deleteProjectButton")
     deleteButton.addEventListener("click", function() {
-      //TODO
-      return
+      dom.showProjDeleteModal()
+      closeModalListener()
+      submitButton.onclick = submitDeleteProj
     })
   }
 
@@ -134,6 +135,16 @@ const input = (() => {
     displayRefresh(newName)
   }
 
+  const submitDeleteProj = function() {
+    let currentProj = getCurrentProject()
+    user.deleteProject(currentProj)
+    dom.clearModal()
+    dom.printProjectList(user.projArray)
+    displayListeners()
+    displayUpcoming()
+    editTaskListeners()
+  }
+
   const submitNewTask = function() {
     let name = document.getElementById("taskNameInput").value
     let projectName = document.getElementById("projectSelect").value
@@ -163,10 +174,6 @@ const input = (() => {
     let currentProj = user.projArray.find( item => 
       item.title == headingTitle.innerHTML
     )
-    
-    if (currentProj == undefined) {
-      currentProj = user.projArray[0]
-    }
 
     return currentProj
   }
