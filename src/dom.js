@@ -118,6 +118,7 @@ const dom = (() => {
       listItem.appendChild(listItemText)
 
       if (isTask) {
+        listItem.setAttribute("data-project", `${item.project}`)
         printTaskDetails(item, listItem, listItemText)
       }
     });
