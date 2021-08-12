@@ -121,6 +121,14 @@ function User() {
     storage.save(this)
   }
 
+  this.flipTaskCompletion = function(taskObj) {
+    if (taskObj.complete == true) {
+      taskObj.complete = false
+    } else {
+      taskObj.complete = true
+    }
+  }
+
   this.generateUpcomingTasks = function() {
     this.upcomingTasks = { past: [], day: [], week: [] }
 
