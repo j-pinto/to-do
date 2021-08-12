@@ -150,6 +150,24 @@ const dom = (() => {
     deleteButton.className = "deleteTaskButton"
     deleteButton.innerHTML = "Delete"
     buttonDiv.appendChild(deleteButton)
+
+    if (task.complete) {
+      completedTaskStyling(listItem)
+    }
+  }
+
+  const completedTaskStyling = (listItem) => {
+    listItem.classList.add("completed")
+    listItem.getElementsByClassName("checkbox").checked = true
+    listItem.getElementsByClassName("editTaskButton").disabled = true
+    listItem.getElementsByClassName("deleteTaskButton").disabled = true
+  }
+
+  const standardTaskStyling = (listItem) => {
+    listItem.classList.remove("completed")
+    listItem.getElementsByClassName("checkbox").checked = false
+    listItem.getElementsByClassName("editTaskButton").disabled = false
+    listItem.getElementsByClassName("deleteTaskButton").disabled = false
   }
 
   const printEmptyList = () => {
@@ -421,7 +439,9 @@ const dom = (() => {
     showTaskModal,
     showProjDeleteModal,
     showTaskDeleteModal,
-    clearModal
+    clearModal,
+    standardTaskStyling,
+    completedTaskStyling
   }
   
 })()
