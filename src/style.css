@@ -110,3 +110,7 @@ body {
 #upcoming:hover, .projectListItem:hover {
   background-color: lightgray;
 }
+
+.completed {
+  opacity: 50%;
+}
