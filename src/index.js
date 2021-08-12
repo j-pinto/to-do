@@ -41,6 +41,11 @@ const input = (() => {
     )
   
     dom.printTaskList(selectedProject)
+    editProjectListener()
+    deleteProjectListener()
+    newTaskListener()
+    editTaskListeners()
+    deleteTaskListeners()
   }
 
   const displayUpcoming = function() {
