@@ -83,8 +83,8 @@ function User() {
     storage.save(this)
   }
 
-  this.createTask = function(name, proj, dateObject, pri='', desc='') {
-    let task = new Task(name, proj, dateObject, pri, desc);
+  this.createTask = function(name, proj, dateObject) {
+    let task = new Task(name, proj, dateObject)
     this.taskArray.push(task)
 
     let project = this.projArray.find(item => item.title == proj)

@@ -3,7 +3,6 @@ import { dom } from "./dom.js";
 import { User } from "./user.js";
 import { format, add } from 'date-fns';
 
-localStorage.clear()
 const user = new User();
 user.attemptLoad();
 user.generateUpcomingTasks()
