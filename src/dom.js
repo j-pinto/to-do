@@ -158,16 +158,16 @@ const dom = (() => {
 
   const completedTaskStyling = (listItem) => {
     listItem.classList.add("completed")
-    listItem.getElementsByClassName("checkbox").checked = true
-    listItem.getElementsByClassName("editTaskButton").disabled = true
-    listItem.getElementsByClassName("deleteTaskButton").disabled = true
+    listItem.getElementsByClassName("checkbox")[0].checked = true
+    listItem.getElementsByClassName("editTaskButton")[0].disabled = true
+    listItem.getElementsByClassName("deleteTaskButton")[0].disabled = true
   }
 
   const standardTaskStyling = (listItem) => {
     listItem.classList.remove("completed")
-    listItem.getElementsByClassName("checkbox").checked = false
-    listItem.getElementsByClassName("editTaskButton").disabled = false
-    listItem.getElementsByClassName("deleteTaskButton").disabled = false
+    listItem.getElementsByClassName("checkbox")[0].checked = false
+    listItem.getElementsByClassName("editTaskButton")[0].disabled = false
+    listItem.getElementsByClassName("deleteTaskButton")[0].disabled = false
   }
 
   const flipTaskStyling = (taskObject, listItem) => {
