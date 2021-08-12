@@ -151,6 +151,12 @@ const dom = (() => {
     deleteButton.innerHTML = "Delete"
     buttonDiv.appendChild(deleteButton)
 
+    let projNameDiv = document.createElement("div")
+    projNameDiv.className = "projNameDiv"
+    projNameDiv.innerHTML = `Project: ${task.project}`
+    projNameDiv.style.display = "none"
+    listItem.appendChild(projNameDiv)
+
     if (task.complete) {
       completedTaskStyling(listItem)
     }
@@ -233,6 +239,11 @@ const dom = (() => {
     if (upcomingTasks.week.length > 0) {
       makeSubheading("Next 7 days:")
       printList(upcomingTasks.week)
+    }
+
+    let projNames = document.getElementsByClassName("projNameDiv")
+    for (let i = 0; i < projNames.length; i++) {
+       projNames[i].style.display = "block"
     }
 
     let editButtons = document.getElementsByClassName("editTaskButton")
