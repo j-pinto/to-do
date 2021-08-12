@@ -297,7 +297,7 @@ const dom = (() => {
 
     let acceptButton = document.createElement("button")
     acceptButton.id = "acceptButton"
-    acceptButton.innerHTML = "Enter"
+    acceptButton.innerHTML = "Submit"
     
     let cancelButton = document.createElement("button")
     cancelButton.id = "cancelButton"
@@ -324,6 +324,9 @@ const dom = (() => {
     let deleteDiv = document.getElementById("deleteDiv")
     deleteDiv.style.display = "block"
     deleteDiv.innerHTML = "Are you sure you want to delete this project? All associated tasks will also be deleted."
+
+    let acceptButton = document.getElementById("acceptButton")
+    acceptButton.innerHTML = "Confirm"
   }
 
   const showTaskModal = (projectArray=[], taskObject=null) => {
@@ -360,6 +363,9 @@ const dom = (() => {
     let deleteDiv = document.getElementById("deleteDiv")
     deleteDiv.style.display = "block"
     deleteDiv.innerHTML = "Are you sure you want to delete this Task?"
+
+    let acceptButton = document.getElementById("acceptButton")
+    acceptButton.innerHTML = "Confirm"
   }
   
   const clearModal = () => {
@@ -371,6 +377,8 @@ const dom = (() => {
     taskEntryDiv.style.display = "none"
     let deleteDiv = document.getElementById("deleteDiv")
     deleteDiv.style.display = "none"
+    let acceptButton = document.getElementById("acceptButton")
+    acceptButton.innerHTML = "Submit"
 
     document.getElementById("dateInput").value = ""
     document.getElementById("projectNameInput").value = ""
@@ -390,6 +398,7 @@ const dom = (() => {
     showProjectModal,
     showTaskModal,
     showProjDeleteModal,
+    showTaskDeleteModal,
     clearModal
   }
   
