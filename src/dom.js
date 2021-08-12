@@ -170,6 +170,14 @@ const dom = (() => {
     listItem.getElementsByClassName("deleteTaskButton").disabled = false
   }
 
+  const flipTaskStyling = (taskObject, listItem) => {
+    if (taskObject.complete) {
+      completedTaskStyling(listItem)
+    } else {
+      standardTaskStyling(listItem)
+    }
+  }
+
   const printEmptyList = () => {
     let list = document.getElementById("taskList")
     let listItem = document.createElement("div")
@@ -440,8 +448,7 @@ const dom = (() => {
     showProjDeleteModal,
     showTaskDeleteModal,
     clearModal,
-    standardTaskStyling,
-    completedTaskStyling
+    flipTaskStyling
   }
   
 })()

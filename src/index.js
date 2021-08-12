@@ -126,6 +126,20 @@ const input = (() => {
     }
   }
 
+  const checkboxListeners = function() {
+    let taskList = document.getElementsByClassName("taskListItem")
+    for (let i = 0; i < taskList.length; i++) {
+      let taskItem = taskList[i]
+      taskItem.addEventListener("change", function(event) {
+        if (event.target.className == "checkbox") {
+          let taskObject = getCurrentTask(this)
+          user.flipTaskCompletion(taskObject)
+          dom.flipTaskStyling(taskObject, taskItem)
+        }
+      })
+    }
+  }
+
   const submitNewProj = function() {
     let name = document.getElementById("projectNameInput").value
     user.createProject(name)
