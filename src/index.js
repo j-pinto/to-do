@@ -202,7 +202,12 @@ const input = (() => {
 
   const getCurrentTask = function(el) {
     let taskName = el.getElementsByClassName("taskListItemText")[0].innerHTML
-    let task = user.taskArray.find(item => item.title == taskName)
+    let currentProj = getCurrentProject()
+    let projName = currentProj.title
+
+    let task = user.taskArray.find(item => 
+      (item.title == taskName && item.project == projName)
+    )
     return task
   }
 
